@@ -6,6 +6,7 @@ use App\Classes\PublicController;
 
 class IndexController extends PublicController
 {
+    
     /**
      * Home action
      */
