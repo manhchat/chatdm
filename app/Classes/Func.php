@@ -3,7 +3,7 @@ namespace App\Classes;
 /**
  * @author ChatDM
  */
-class Func
+trait Func
 {
     /**
      * convert url
