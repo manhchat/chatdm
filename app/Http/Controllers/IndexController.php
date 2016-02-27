@@ -13,6 +13,7 @@ class IndexController extends PublicController
 	
     public function index()
     {
+    	echo $this->get_microtime();
     	return view('home');
     }
     /**
