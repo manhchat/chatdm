@@ -14,5 +14,7 @@ class IndexController extends PublicController
     {
     	return view('home');
     }
-    
+    /**
+     * DucNV Starting
+     */
 }
