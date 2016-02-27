@@ -1,7 +1,7 @@
 <div class="header">
 		<div class="container">
 			<div class="logo">
-				<a href="index.html"><span>Bán</span>lại</a>
+				<a href="<?php echo url('')?>"><span>Bán</span>lại</a>
 			</div>
 			<div class="header-right">
 			<a class="account" href="login.html">Tài khoản</a>
