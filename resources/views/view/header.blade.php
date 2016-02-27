@@ -7,8 +7,7 @@
 			<a class="account" href="login.html">Tài khoản</a>
 	<!-- Large modal -->
 		<div class="selectregion">
-			<button class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-			Chọn thành phố</button>
+			<button class="btn btn-primary" data-toggle="modal" data-target="#myModal">Chọn thành phố</button>
 				<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
 				aria-hidden="true">
 					<div class="modal-dialog modal-lg">
