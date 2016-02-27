@@ -39,14 +39,13 @@
 								</span>
 							<div class="clearfix"> </div>
 						</div>
-						<input type="submit" value="Log in">
+						<input type="submit" value="<?php echo trans('login.login_your_login')?>">
 					</form>
 				</div>
 				<div class="new_people">
-					<h2>For New People</h2>
-					<p>Having hands on experience in creating innovative designs,I do offer design
-						solutions which harness.</p>
-					<a href="<?php echo url('dang-ky')?>">Register Now!</a>
+					<h2><?php echo trans('login.login_your_chuacotk')?></h2>
+					<p><?php echo trans('login.login_your_content')?></p>
+					<a href="<?php echo url('dang-ky')?>"><?php echo trans('login.login_your_dky')?></a>
 				</div>
 			</div>
 		</div>
