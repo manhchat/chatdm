@@ -44,27 +44,6 @@
   });
 </script>
 <script type="text/javascript" src="<?php echo asset('js/jquery.leanModal.min.js')?>"></script>
-<link href="<?php echo asset('css/jquery.uls.css')?>" rel="stylesheet"/>
-<link href="<?php echo asset('css/jquery.uls.grid.css')?>" rel="stylesheet"/>
-<link href="<?php echo asset('css/jquery.uls.lcd.css')?>" rel="stylesheet"/>
-<!-- Source -->
-<script src="<?php echo asset('js/jquery.uls.data.js')?>"></script>
-<script src="<?php echo asset('js/jquery.uls.data.utils.js')?>"></script>
-<script src="<?php echo asset('js/jquery.uls.lcd.js')?>"></script>
-<script src="<?php echo asset('js/jquery.uls.languagefilter.js')?>"></script>
-<script src="<?php echo asset('js/jquery.uls.regionfilter.js')?>"></script>
-<script src="<?php echo asset('js/jquery.uls.core.js')?>"></script>
-<script>
-			$( document ).ready( function() {
-				$( '.uls-trigger' ).uls( {
-					onSelect : function( language ) {
-						var languageName = $.uls.data.getAutonym( language );
-						$( '.uls-trigger' ).text( languageName );
-					},
-					quickList: ['en', 'hi', 'he', 'ml', 'ta', 'fr'] //FIXME
-				} );
-			} );
-		</script>
 </head>
 <body>
 	@section('header')

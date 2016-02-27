@@ -13,7 +13,7 @@
 
 Route::get('/', 'IndexController@index');
 
-Route::get('login', 'LoginController@index');
+Route::get('dang-nhap', 'LoginController@index');
 /* Route::get('/login', function () {
 	return view('login');
 }); */

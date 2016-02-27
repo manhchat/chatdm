@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Classes\PublicController;
 use App;
 
-class IndexController extends PublicController
+class LoginController extends PublicController
 {
     /**
      * Home action
@@ -13,10 +13,7 @@ class IndexController extends PublicController
 	
     public function index()
     {
-    	return view('home');
+
+    	return view('login/index');
     }
-    /**
-     * DucNV Starting
-     * ChatDM comment
-     */
 }

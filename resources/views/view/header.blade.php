@@ -5,7 +5,6 @@
 			</div>
 			<div class="header-right">
 			<a class="account" href="login.html">Tài khoản</a>
-			<span class="active uls-trigger">Select language</span>
 	<!-- Large modal -->
 		<div class="selectregion">
 			<button class="btn btn-primary" data-toggle="modal" data-target="#myModal">

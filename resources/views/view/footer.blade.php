@@ -68,7 +68,7 @@
 					</ul>
 				</div>
 				<div class="copyrights">
-					<p> © 2016 Resale. All Rights Reserved | Design by  <a href="http://banlai.vn/"> Bán lại</a></p>
+					<p><?php echo trans('home.footer_copyright')?></p>
 				</div>
 				<div class="clearfix"></div>
 			</div>
