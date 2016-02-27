@@ -14,4 +14,5 @@ class IndexController extends PublicController
     {
     	return view('home');
     }
+    
 }
