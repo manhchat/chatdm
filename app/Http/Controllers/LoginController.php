@@ -12,6 +12,7 @@ use App\User;
 use Session;
 use App\Classes\Auth;
 use App\Classes\ClassesAuth;
+use Illuminate\Support\Facades\Mail;
 class LoginController extends PublicController
 {
     /**
@@ -47,6 +48,19 @@ class LoginController extends PublicController
     		$user = $obj->loginUser(Input::get('email'), Input::get('password'));
     		if ($user) {
     			ClassesAuth::set($user);
+    			
+    			/* $data = array(
+			        'email' => "hotrolaptop.com@gmail.com",
+			    );
+			
+			    Mail::send('mail.create-account', $data, function ($message) {
+			
+			        $message->from('hotrolaptop.com@gmail.com', 'Learning Laravel');
+			
+			        $message->to('manhchat.it@gmail.com')->subject('Learning Laravel test email');
+			
+			    }); */
+    			
     			return redirect('/');
     		} else {
     			    $validator->errors()->add('login_error', trans('login.login_incorrect'));
