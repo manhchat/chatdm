@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use App\Classes\PublicController;
 use App;
 use Session;
