@@ -58,6 +58,9 @@
 			$('#myModal').modal('');
 			</script>
 		</div>
+		<?php if (ClassesAuth::isAuth()):?>
+			<a class="account logout" href="<?php echo url('dang-xuat')?>">Đăng xuất</a>
+		<?php endif;?>
 	</div>
 	</div>
 </div>

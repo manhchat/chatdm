@@ -4788,9 +4788,11 @@ label {
 		padding: 20px 0px;
 	}
 }
-
-
-
-
-
-
+a.logout {
+	margin-left: 20px;
+	background-color: transparent;
+	color: #6D6D6D;
+}
+a.logout:hover{
+	background-color: transparent;
+}

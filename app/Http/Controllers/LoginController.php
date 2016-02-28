@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Redirect;
 use App\User;
 use Session;
 use App\Classes\Auth;
+use App\Classes\ClassesAuth;
 class LoginController extends PublicController
 {
     /**
@@ -30,10 +31,10 @@ class LoginController extends PublicController
     			'password'         => 'required',
     	);
     	$messages = array(
-    			'email.required' => 'Hãy nhập địa chỉ email.',
-    			'email.email' => 'Email không đúng định dạng.',
-    			'email.max' => 'Email vượt quá ký tự cho phép là 100',
-    			'password.required' => 'Hãy nhập password.',
+    			'email.required' => trans('login.login_please_input_email'),
+    			'email.email' => trans('login.login_format_email'),
+    			'email.max' => trans('login.login_max_email'),
+    			'password.required' => trans('login.login_please_input_password'),
     	);
     	$validator = Validator::make(Input::all(),$rules, $messages);
     	if ($validator->fails()) {
@@ -45,11 +46,17 @@ class LoginController extends PublicController
     		$obj = new User();
     		$user = $obj->loginUser(Input::get('email'), Input::get('password'));
     		if ($user) {
-    			Auth::set($user);
+    			ClassesAuth::set($user);
     			return redirect('/');
     		} else {
     			
     		}
     	}
+    }
+    
+    public function logout()
+    {
+    	ClassesAuth::logout();
+    	return redirect('/');
     }
 }

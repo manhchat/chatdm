@@ -14,6 +14,8 @@
 Route::get('/', 'IndexController@index');
 
 Route::get('dang-nhap', 'LoginController@index');
+Route::get('dang-xuat', 'LoginController@logout');
+
 Route::get('dang-ky', 'RegisterController@index');
 /* Route::get('/login', function () {
 	return view('login');

@@ -205,5 +205,7 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
         'ClassesAuth' => App\Classes\ClassesAuth::class,
+        'Codedef' => App\Classes\Codedef::class,
+        'Func' => App\Classes\Func::class,
     ],
 ];

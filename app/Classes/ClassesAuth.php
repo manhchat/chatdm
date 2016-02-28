@@ -47,7 +47,7 @@ class ClassesAuth
 		}
 	}
 	
-	public function logout()
+	public static function logout()
 	{
 		Session::forget(LOGIN_IDENTITY);
 		Session::forget(LOGIN_IDENTITY_TIMELIFE);
