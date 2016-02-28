@@ -53,7 +53,7 @@
 								</form>
 							</div>
 							<div class="sub_home_right">
-								<p><?php echo trans('register.register_gobackto')?><a href=""><?php echo trans('register.register_home')?></a></p>
+								<p><?php echo trans('register.register_gobackto')?><a href="<?php echo url('/')?>"><?php echo trans('register.register_home')?></a></p>
 							</div>
 							<div class="clearfix"> </div>
 						</div>

@@ -17,6 +17,8 @@ Route::get('dang-nhap', 'LoginController@index');
 Route::get('dang-xuat', 'LoginController@logout');
 
 Route::get('dang-ky', 'RegisterController@index');
+Route::get('danh-muc', 'CategoryController@index');
+Route::get('dang-tin', 'PostController@index');
 /* Route::get('/login', function () {
 	return view('login');
 }); */

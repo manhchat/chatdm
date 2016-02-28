@@ -146,13 +146,13 @@ button.close {
     background-color: #FFFFFF;
     border-color: #D1E0EE;
 }
-.btn {
+/* .btn {
     border-radius: 0;
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
     -o-border-radius: 0px;
-}
+} */
 .bootstrap-select.btn-group .dropdown-menu li {
     margin: 6px 0;
 }
@@ -2992,7 +2992,7 @@ ul.privacy-start {
     padding: 40px;
     margin-bottom: 60px;
 }
-.post-ad-form form label {
+.post-ad-form form .post-label {
     font-size: 15px;
     text-transform: capitalize;
     margin-bottom: 8px;
@@ -3005,10 +3005,10 @@ ul.privacy-start {
     text-align: right;
     margin-right: 4%;
 }
-.post-ad-form form label span {
+/* .post-ad-form form label span {
 	color:red;
-}
-.post-ad-form input[type="text"] {
+} */
+.post-ad-form .post-text {
     padding: 10px 10px 10px 10px;
     width: 70%;
     margin-bottom: 25px;
@@ -3231,14 +3231,14 @@ div#home {
     color: #999;
     border-top: none !important;
 }
-.btn {
+/* .btn {
     border-radius: 0px;
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
     -o-border-radius: 0px;
     outline: none;
-}
+} */
 .btn-default:active, .btn-default:focus, .btn-default:hover {
     outline: none !important;
 }
@@ -3486,7 +3486,7 @@ label {
 	.work-section-grid h4 {
 		font-size: 23px;
 	}
-	.post-ad-form form label {
+	.post-ad-form form .post-label {
 		width: 20%;
 		margin-right: 3%;
 	}
@@ -3696,7 +3696,7 @@ label {
 	.post-ad-form {
 		padding: 35px 20px;
 	}
-	.post-ad-form form label {
+	.post-ad-form form .post-label {
 		width: 22%;
 	}
 	p.post-terms {
@@ -3905,10 +3905,10 @@ label {
 	h2.head {
 		font-size: 30px;
 	}
-	.post-ad-form form label {
+	.post-ad-form form .post-label {
 		font-size: 13px;
 	}
-	.post-ad-form form label {
+	.post-ad-form form .post-label {
 		width: 23%;
 	}	
 	p.post-terms {
@@ -4187,7 +4187,7 @@ label {
 	.region-block {
 		padding: 25px 0px;
 	}
-	.post-ad-form form label {
+	.post-ad-form form .post-label {
 		width: 100%;
 		display: block;
 		text-align: left;

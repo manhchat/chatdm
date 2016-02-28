@@ -14,4 +14,5 @@ return [
 	'login_please_input_password' => 'Hãy nhập mật khẩu của bạn.',
 	'login_format_email' => 'Email không đúng định dạng.',
 	'login_max_email' => 'Email vượt quá ký tự cho phép là 100.',
+	'login_incorrect' => 'Email hoặc mật khẩu không đúng.',
 ];

@@ -49,7 +49,8 @@ class LoginController extends PublicController
     			ClassesAuth::set($user);
     			return redirect('/');
     		} else {
-    			
+    			    $validator->errors()->add('login_error', trans('login.login_incorrect'));
+    			    return redirect('dang-nhap')->withErrors($validator)->withInput(Input::except('password'));
     		}
     	}
     }
