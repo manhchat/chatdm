@@ -20,27 +20,34 @@
 						<p><a href="#"><?php echo trans('login.login_click_here')?></a> </p>
 						<div class="clearfix"> </div>
 					</div>
-					<form>
+					@if ($errors->has())
+				        <div class="alert alert-danger">
+				            @foreach ($errors->all() as $error)
+				                {{ $error }}<br>        
+				            @endforeach
+				        </div>
+			        @endif
+					<?php echo Form::open(array('url' => url('login/logon')))?>
 						<div class="log-input">
 							<div class="log-input-left">
-								<input type="text" class="user" value="<?php echo trans('login.login_your_email')?>" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '<?php echo trans('login.login_your_email')?>';}"/>
+								<?php echo Form::text('email', old('email'), array('class' => 'user', 'placeholder' => trans('login.login_your_email')))?>
 							</div>
-								<span class="checkbox2">
-									 <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i></label>
-								</span>
+<!-- 							<span class="checkbox2"> -->
+<!-- 								 <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i></label> -->
+<!-- 							</span> -->
 							<div class="clearfix"> </div>
 						</div>
 						<div class="log-input">
 							<div class="log-input-left">
-								<input type="password" class="lock" value="password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email address:';}"/>
+								<?php echo Form::password('password', array('class' => 'lock', 'placeholder' => trans('login.login_your_password')))?>
 							</div>
-								<span class="checkbox2">
-									 <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i></label>
-								</span>
+<!-- 							<span class="checkbox2"> -->
+<!-- 								 <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i></label> -->
+<!-- 							</span> -->
 							<div class="clearfix"> </div>
 						</div>
-						<input type="submit" value="<?php echo trans('login.login_your_login')?>">
-					</form>
+						<?php echo Form::submit(trans('login.login_your_login'));?>
+					<?php echo Form::close()?>
 				</div>
 				<div class="new_people">
 					<h2><?php echo trans('login.login_your_chuacotk')?></h2>

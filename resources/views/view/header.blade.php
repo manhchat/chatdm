@@ -4,7 +4,7 @@
 				<a href="<?php echo url('')?>"><span>Bán</span>lại</a>
 			</div>
 			<div class="header-right">
-			<a class="account" href="login.html">Tài khoản</a>
+			<a class="account" href="<?php echo url('dang-nhap')?>">Tài khoản</a>
 	<!-- Large modal -->
 		<div class="selectregion">
 			<button class="btn btn-primary" data-toggle="modal" data-target="#myModal">Chọn thành phố</button>

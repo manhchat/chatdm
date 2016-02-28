@@ -2,25 +2,29 @@
 
 namespace App;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
+use DB;
 
-class User extends Authenticatable
+class User extends Model
 {
+    //
+    protected $table = 'user';
+    
     /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
+     * Login
+     * @param string $email
+     * @param string $password
+     * @return boolean
      */
-    protected $fillable = [
-        'name', 'email', 'password',
-    ];
-
-    /**
-     * The attributes excluded from the model's JSON form.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
+    public function loginUser($email, $password)
+    {
+    	if ($email == '' || $password == '') {
+    		return false;
+    	}
+    	$users = DB::table($this->table)
+    				->select()
+    				->where('email', '=', $email)
+    				->where('password', '=', md5($password))->first();
+    	return $users;
+    }
 }

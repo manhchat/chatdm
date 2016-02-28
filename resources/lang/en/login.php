@@ -9,4 +9,5 @@ return [
 	'login_your_chuacotk' => 'For New People',
 	'login_your_content' => 'Having hands on experience in creating innovative designs,I do offer design solutions which harness.',
 	'login_your_dky' => 'Register Now !',
+	'login_your_password' => 'Your password'
 ];
