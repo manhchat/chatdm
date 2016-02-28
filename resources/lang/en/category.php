@@ -15,9 +15,6 @@ return[
 	'category_job' => 'Job',
 	'category_real' => 'Real Estate',
 	'category_ad' => 'All Ads',
-		
-	'category_select_allusa' => 'All USA',
-	'category_select_city' => '(Select your city to see local ads)',
 	
 		
 ];

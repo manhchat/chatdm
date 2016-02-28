@@ -32,24 +32,24 @@
 						<a href="all-classifieds.html"><?php echo trans('category.category_ad')?></a>
 					</ul>
 					<div class="resp-tabs-container hor_1">
-						<span class="active total" style="display:block;" data-toggle="modal" data-target="#myModal"><strong>All USA</strong> (Select your city to see local ads)</span>
+						<span class="active total" style="display:block;" data-toggle="modal" data-target="#myModal"><strong><?php echo trans('subcat.subcat_allusa')?></strong> <?php echo trans('subcat.subcat_city')?></span>
 						<div>
 							<div class="category">
 								<div class="category-img">
 									<img src="images/cat1.png" title="image" alt="" />
 								</div>
 								<div class="category-info">
-									<h4>Mobiles</h4>
-									<span>5,12,850 Ads</span>
-									<a href="all-classifieds.html">View all Ads</a>
+									<h4><?php echo trans('subcat.subcat_mobile')?></h4>
+									<span>5,12,850 <?php echo trans('subcat.subcat_ads')?></span>
+									<a href="all-classifieds.html"><?php echo trans('subcat.subcat_allads')?></a>
 								</div>
 								<div class="clearfix"></div>
 							</div>
 							<div class="sub-categories">
 								<ul>
-									<li><a href="mobiles.html">mobile phones</a></li>
-									<li><a href="mobiles.html">Tablets</a></li>
-									<li><a href="mobiles.html">Accessories</a></li>
+									<li><a href="mobiles.html"><?php echo trans('subcat.subcat_mobilephone')?></a></li>
+									<li><a href="mobiles.html"><?php echo trans('subcat.subcat_tablet')?></a></li>
+									<li><a href="mobiles.html"><?php echo trans('subcat.subcat_acc')?></a></li>
 									<div class="clearfix"></div>
 								</ul>
 							</div>
@@ -60,20 +60,20 @@
 									<img src="images/cat2.png" title="image" alt="" />
 								</div>
 								<div class="category-info">
-									<h4>Electronics & Appliances</h4>
-									<span>2,01,850 Ads</span>
-									<a href="all-classifieds.html">View all Ads</a>
+									<h4><?php echo trans('category.category_electronic')?></h4>
+									<span>2,01,850 <?php echo trans('subcat.subcat_ads')?></span>
+									<a href="all-classifieds.html"><?php echo trans('subcat.subcat_allads')?></a>
 								</div>
 								<div class="clearfix"></div>
 							</div>
 							<div class="sub-categories">
 								<ul>
-									<li><a href="electronics-appliances.html">Computers & accessories</a></li>
-									<li><a href="electronics-appliances.html">Tv - video - audio</a></li>
-									<li><a href="electronics-appliances.html">Cameras & accessories</a></li>
-									<li><a href="electronics-appliances.html">Games & Entertainment</a></li>
-									<li><a href="electronics-appliances.html">Fridge - AC - Washing Machine</a></li>
-									<li><a href="electronics-appliances.html">Kitchen & Other Appliances</a></li>
+									<li><a href="electronics-appliances.html"><?php echo trans('subcat.subcat_com')?></a></li>
+									<li><a href="electronics-appliances.html"><?php echo trans('subcat.subcat_tv')?></a></li>
+									<li><a href="electronics-appliances.html"><?php echo trans('subcat.subcat_cam')?></a></li>
+									<li><a href="electronics-appliances.html"><?php echo trans('subcat.subcat_game')?></a></li>
+									<li><a href="electronics-appliances.html"><?php echo trans('subcat.subcat_frid')?></a></li>
+									<li><a href="electronics-appliances.html"><?php echo trans('subcat.subcat_kit')?></a></li>
 									<div class="clearfix"></div>
 								</ul>
 							</div>
@@ -84,17 +84,17 @@
 									<img src="images/cat3.png" title="image" alt="" />
 								</div>
 								<div class="category-info">
-									<h4>Cars</h4>
-									<span>1,98,080 Ads</span>
-									<a href="all-classifieds.html">View all Ads</a>
+									<h4><?php echo trans('category.category_car')?></h4>
+									<span>1,98,080 <?php echo trans('subcat.subcat_ads')?></span>
+									<a href="all-classifieds.html"><?php echo trans('subcat.subcat_allads')?></a>
 								</div>
 								<div class="clearfix"></div>
 							</div>
 							<div class="sub-categories">
 								<ul>
-									<li><a href="cars.html">Commercial Vehicles</a></li>
-									<li><a href="cars.html">Other Vehicles</a></li>
-									<li><a href="cars.html">Spare Parts</a></li>
+									<li><a href="cars.html"><?php echo trans('subcat.subcat_comm')?></a></li>
+									<li><a href="cars.html"><?php echo trans('subcat.subcat_oth')?></a></li>
+									<li><a href="cars.html"><?php echo trans('subcat.subcat_spare')?></a></li>
 									<div class="clearfix"></div>
 								</ul>
 							</div>
@@ -105,18 +105,18 @@
 									<img src="images/cat4.png" title="image" alt="" />
 								</div>
 								<div class="category-info">
-									<h4>Bikes</h4>
-									<span>6,17,568 Ads</span>
-									<a href="all-classifieds.html">View all Ads</a>
+									<h4><?php echo trans('category.category_bike')?></h4>
+									<span>6,17,568 <?php echo trans('subcat.subcat_ads')?></span>
+									<a href="all-classifieds.html"><?php echo trans('subcat.subcat_allads')?></a>
 								</div>
 								<div class="clearfix"></div>
 							</div>
 							<div class="sub-categories">
 								<ul>
-									<li><a href="bikes.html">Motorcycles</a></li>
-									<li><a href="bikes.html">Scooters</a></li>
-									<li><a href="bikes.html">Bicycles</a></li>
-									<li><a href="bikes.html">Spare Parts</a></li>
+									<li><a href="bikes.html"><?php echo trans('subcat.subcat_moto')?></a></li>
+									<li><a href="bikes.html"><?php echo trans('subcat.subcat_scot')?></a></li>
+									<li><a href="bikes.html"><?php echo trans('subcat.subcat_bicy')?></a></li>
+									<li><a href="bikes.html"><?php echo trans('subcat.subcat_spare')?></a></li>
 									<div class="clearfix"></div>
 								</ul>
 							</div>
@@ -127,9 +127,9 @@
 									<img src="images/cat5.png" title="image" alt="" />
 								</div>
 								<div class="category-info">
-									<h4>Furniture</h4>
-									<span>1,05,168 Ads</span>
-									<a href="all-classifieds.html">View all Ads</a>
+									<h4><?php echo trans('category.category_furniture')?></h4>
+									<span>1,05,168 <?php echo trans('subcat.subcat_ads')?></span>
+									<a href="all-classifieds.html"><?php echo trans('subcat.subcat_allads')?></a>
 								</div>
 								<div class="clearfix"></div>
 							</div>

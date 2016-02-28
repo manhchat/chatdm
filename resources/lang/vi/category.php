@@ -5,7 +5,7 @@ return [
 		'category_mobile' => 'Điện Thoại',
 		'category_electronic' => 'Điện Tử & Gia Dụng',
 		'category_car' => 'Ô Tô',
-		'category_bike' => 'Xe Đạp',
+		'category_bike' => 'Xe Máy',
 		'category_furniture' => 'Nội Thất',
 		'category_pet' => 'Thú Nuôi',
 		'category_book' => 'Sách, Thể Thao, Sở Thích',
@@ -15,4 +15,5 @@ return [
 		'category_job' => 'Tìm Việc',
 		'category_real' => 'Bất Động Sản',
 		'category_ad' => 'Tất Cả Rao Vặt',
+		
 ];
