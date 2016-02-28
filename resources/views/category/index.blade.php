@@ -13,23 +13,23 @@
 	<!--Vertical Tab-->
 	<div class="categories-section main-grid-border">
 		<div class="container">
-			<h2 class="head">Main Categories</h2>
+			<h2 class="head"><?php echo trans('category.category_main')?></h2>
 			<div class="category-list">
 				<div id="parentVerticalTab">
 					<ul class="resp-tabs-list hor_1">
-						<li>Mobiles</li>
-						<li>Electronics & Appliances</li>
-						<li>Cars</li>
-						<li>Bikes</li>
-						<li>Furniture</li>
-						<li>Pets</li>
-						<li>Books, Sports & Hobbies</li>
-						<li>Fashion</li>
-						<li>Kids</li>
-						<li>Services</li>
-						<li>Jobs</li>
-						<li>Real Estate</li>
-						<a href="all-classifieds.html">All Ads</a>
+						<li><?php echo trans('category.category_mobile')?></li>
+						<li><?php echo trans('category.category_electronic')?></li>
+						<li><?php echo trans('category.category_car')?></li>
+						<li><?php echo trans('category.category_bike')?></li>
+						<li><?php echo trans('category.category_furniture')?></li>
+						<li><?php echo trans('category.category_pet')?></li>
+						<li><?php echo trans('category.category_book')?></li>
+						<li><?php echo trans('category.category_fashion')?></li>
+						<li><?php echo trans('category.category_bike')?></li>
+						<li><?php echo trans('category.category_service')?></li>
+						<li><?php echo trans('category.category_job')?></li>
+						<li><?php echo trans('category.category_real')?></li>
+						<a href="all-classifieds.html"><?php echo trans('category.category_ad')?></a>
 					</ul>
 					<div class="resp-tabs-container hor_1">
 						<span class="active total" style="display:block;" data-toggle="modal" data-target="#myModal"><strong>All USA</strong> (Select your city to see local ads)</span>
