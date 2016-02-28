@@ -5,7 +5,7 @@
 			</div>
 			<div class="header-right">
 			<?php if (!ClassesAuth::isAuth()) {?>
-				<a class="account" href="<?php echo url('dang-nhap')?>">Đăng nhập</a>
+				<a class="account" href="<?php echo url('dang-nhap')?>">Tài khoản</a>
 			<?php } else {?>
 				<a class="account" href="<?php echo url('cai-dat-tai-khoan')?>">Quản lý tài khoản</a>
 			<?php }?>
