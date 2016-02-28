@@ -11,5 +11,6 @@ class CommonController extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests, Func;
     public function __construct()
     {
+    	ClassesAuth::updateExprire(SESSION_LIFETIME);
     }
 }

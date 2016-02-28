@@ -4,7 +4,11 @@
 				<a href="<?php echo url('')?>"><span>Bán</span>lại</a>
 			</div>
 			<div class="header-right">
-			<a class="account" href="<?php echo url('dang-nhap')?>">Tài khoản</a>
+			<?php if (!ClassesAuth::isAuth()) {?>
+				<a class="account" href="<?php echo url('dang-nhap')?>">Đăng nhập</a>
+			<?php } else {?>
+				<a class="account" href="<?php echo url('cai-dat-tai-khoan')?>">Quản lý tài khoản</a>
+			<?php }?>
 	<!-- Large modal -->
 		<div class="selectregion">
 			<button class="btn btn-primary" data-toggle="modal" data-target="#myModal">Chọn thành phố</button>

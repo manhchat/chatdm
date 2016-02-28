@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use App\User;
 use Session;
+use App\Classes\Auth;
 class LoginController extends PublicController
 {
     /**
@@ -44,7 +45,7 @@ class LoginController extends PublicController
     		$obj = new User();
     		$user = $obj->loginUser(Input::get('email'), Input::get('password'));
     		if ($user) {
-    			Session::set('loginUser', $user);
+    			Auth::set($user);
     			return redirect('/');
     		} else {
     			
