@@ -13,7 +13,8 @@ class IndexController extends PublicController
     public function index()
     {
     	$categoryList = Codedef::getID('CATEGORY_LIST');
-    	return view('home', array('categoryList' => $categoryList));
+    	$danhSachTinhThanh = Codedef::getID('TINH_THANH');
+    	return view('home', array('categoryList' => $categoryList, 'danhSachTinhThanh' => $danhSachTinhThanh));
     }
     /**
      * DucNV Starting
