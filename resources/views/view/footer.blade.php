@@ -44,7 +44,7 @@
 								</ul>	
 								<ul class="location">
 									<li><span class="glyphicon glyphicon-envelope"></span></li>
-									<li><a href="mailto:info@example.com">contact@banlai.vn</a></li>
+									<li><a href="mailto:contact@banlai.vn">contact@banlai.vn</a></li>
 									<div class="clearfix"></div>
 								</ul>						
 							</address>
@@ -56,7 +56,7 @@
 			<div class="footer-bottom text-center">
 			<div class="container">
 				<div class="footer-logo">
-					<a href="index.html"><span>Bán</span>lại</a>
+					<a href="<?php echo url('/')?>"><span>Bán</span>lại</a>
 				</div>
 				<div class="footer-social-icons">
 					<ul>
