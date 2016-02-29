@@ -1,10 +1,9 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use App\Classes\PublicController;
 use App;
 use Session;
+use App\Classes\Codedef;
 class IndexController extends PublicController
 {
     /**
@@ -13,7 +12,9 @@ class IndexController extends PublicController
 	
     public function index()
     {
-    	return view('home');
+    	$categoryList = Codedef::getID('CATEGORY_LIST');
+    	$danhSachTinhThanh = Codedef::getID('TINH_THANH');
+    	return view('home', array('categoryList' => $categoryList, 'danhSachTinhThanh' => $danhSachTinhThanh));
     }
     /**
      * DucNV Starting

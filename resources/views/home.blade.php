@@ -12,126 +12,18 @@
 <div class="content">
 	<div class="categories">
 		<div class="container">
-			<div class="col-md-2 focus-grid">
-				<a href="categories.html">
-					<div class="focus-border">
-						<div class="focus-layout">
-							<div class="focus-image"><i class="fa fa-mobile"></i></div>
-							<h4 class="clrchg">Điện thoại</h4>
+			<?php foreach ($categoryList as $key => $value):?>
+				<div class="col-md-2 focus-grid">
+					<a href="<?php echo url('danh-muc#parentVerticalTab'.$value['id'])?>">
+						<div class="focus-border">
+							<div class="focus-layout">
+								<div class="focus-image"><i class="fa <?php echo $value['class']?>"></i></div>
+								<h4 class="clrchg"><?php echo $value['title']?></h4>
+							</div>
 						</div>
-					</div>
-				</a>
-			</div>
-			<div class="col-md-2 focus-grid">
-				<a href="categories.html#parentVerticalTab2">
-					<div class="focus-border">
-						<div class="focus-layout">
-							<div class="focus-image"><i class="fa fa-laptop"></i></div>
-							<h4 class="clrchg"> Điện tử & Gia dụng</h4>
-						</div>
-					</div>
-				</a>
-			</div>
-			<div class="col-md-2 focus-grid">
-				<a href="categories.html#parentVerticalTab3">
-					<div class="focus-border">
-						<div class="focus-layout">
-							<div class="focus-image"><i class="fa fa-car"></i></div>
-							<h4 class="clrchg">Ô tô</h4>
-						</div>
-					</div>
-				</a>
-			</div>	
-			<div class="col-md-2 focus-grid">
-				<a href="categories.html#parentVerticalTab4">
-					<div class="focus-border">
-						<div class="focus-layout">
-							<div class="focus-image"><i class="fa fa-motorcycle"></i></div>
-							<h4 class="clrchg">Xe máy & Xe đạp</h4>
-						</div>
-					</div>
-				</a>
-			</div>	
-			<div class="col-md-2 focus-grid">
-				<a href="categories.html#parentVerticalTab5">
-					<div class="focus-border">
-						<div class="focus-layout">
-							<div class="focus-image"><i class="fa fa-wheelchair"></i></div>
-							<h4 class="clrchg">Nội thất</h4>
-						</div>
-					</div>
-				</a>
-			</div>
-			<div class="col-md-2 focus-grid">
-				<a href="categories.html#parentVerticalTab6">
-					<div class="focus-border">
-						<div class="focus-layout">
-							<div class="focus-image"><i class="fa fa-paw"></i></div>
-							<h4 class="clrchg">Vật nuôi</h4>
-						</div>
-					</div>
-				</a>
-			</div>	
-			<div class="col-md-2 focus-grid">
-				<a href="categories.html#parentVerticalTab7">
-					<div class="focus-border">
-						<div class="focus-layout">
-							<div class="focus-image"><i class="fa fa-book"></i></div>
-							<h4 class="clrchg">Sách, Thể thao & Sở thích</h4>
-						</div>
-					</div>
-				</a>
-			</div>	
-			<div class="col-md-2 focus-grid">
-				<a href="categories.html#parentVerticalTab8">
-					<div class="focus-border">
-						<div class="focus-layout">
-							<div class="focus-image"><i class="fa fa-asterisk"></i></div>
-							<h4 class="clrchg">Thời trang</h4>
-						</div>
-					</div>
-				</a>
-			</div>	
-			<div class="col-md-2 focus-grid">
-				<a href="categories.html#parentVerticalTab9">
-					<div class="focus-border">
-						<div class="focus-layout">
-							<div class="focus-image"><i class="fa fa-gamepad"></i></div>
-							<h4 class="clrchg">Vật dụng cho trẻ</h4>
-						</div>
-					</div>
-				</a>
-			</div>	
-			<div class="col-md-2 focus-grid">
-				<a href="categories.html#parentVerticalTab10">
-					<div class="focus-border">
-						<div class="focus-layout">
-							<div class="focus-image"><i class="fa fa-shield"></i></div>
-							<h4 class="clrchg">Dịch vụ</h4>
-						</div>
-					</div>
-				</a>
-			</div>
-			<div class="col-md-2 focus-grid">
-				<a href="categories.html#parentVerticalTab12">
-					<div class="focus-border">
-						<div class="focus-layout">
-							<div class="focus-image"><i class="fa fa-home"></i></div>
-							<h4 class="clrchg">Nhà đất</h4>
-						</div>
-					</div>
-				</a>
-			</div>
-			<div class="col-md-2 focus-grid">
-				<a href="categories.html#parentVerticalTab11">
-					<div class="focus-border">
-						<div class="focus-layout">
-							<div class="focus-image"><i class="fa fa-at"></i></div>
-							<h4 class="clrchg">Khác</h4>
-						</div>
-					</div>
-				</a>
-			</div>
+					</a>
+				</div>
+			<?php endforeach;?>
 			<div class="clearfix"></div>
 		</div>
 	</div>
