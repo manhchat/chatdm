@@ -135,10 +135,10 @@
 							</div>
 							<div class="sub-categories">
 								<ul>
-									<li><a href="furnitures.html">Sofa & Dining</a></li>
-									<li><a href="furnitures.html">Beds & Wardrobes</a></li>
-									<li><a href="furnitures.html">Home Decor & Garden</a></li>
-									<li><a href="furnitures.html">Other Household Items</a></li>
+									<li><a href="furnitures.html"><?php echo trans('subcat.subcat_sofa')?></a></li>
+									<li><a href="furnitures.html"><?php echo trans('subcat.subcat_bed')?></a></li>
+									<li><a href="furnitures.html"><?php echo trans('subcat.subcat_home')?></a></li>
+									<li><a href="furnitures.html"><?php echo trans('subcat.subcat_other')?></a></li>
 									<div class="clearfix"></div>
 								</ul>
 							</div>
@@ -149,18 +149,18 @@
 									<img src="images/cat6.png" title="image" alt="" />
 								</div>
 								<div class="category-info">
-									<h4>Pets</h4>
-									<span>1,77,816 Ads</span>
-									<a href="all-classifieds.html">View all Ads</a>
+									<h4><?php echo trans('category.category_pet')?></h4>
+									<span>1,77,816 <?php echo trans('subcat.subcat_ads')?></span>
+									<a href="all-classifieds.html"><?php echo trans('subcat.subcat_allads')?></a>
 								</div>
 								<div class="clearfix"></div>
 							</div>
 							<div class="sub-categories">
 								<ul>
-									<li><a href="pets.html">Dogs</a></li>
-									<li><a href="pets.html">Aquariums</a></li>
-									<li><a href="pets.html">Pet Food & Accessories</a></li>
-									<li><a href="pets.html">Other Pets</a></li>
+									<li><a href="pets.html"><?php echo trans('subcat.subcat_dog')?></a></li>
+									<li><a href="pets.html"><?php echo trans('subcat.subcat_ca')?></a></li>
+									<li><a href="pets.html"><?php echo trans('subcat.subcat_pk')?></a></li>
+									<li><a href="pets.html"><?php echo trans('subcat.subcat_tn')?></a></li>
 									<div class="clearfix"></div>
 								</ul>
 							</div>
@@ -171,19 +171,19 @@
 									<img src="images/cat7.png" title="image" alt="" />
 								</div>
 								<div class="category-info">
-									<h4>Books, Sports & Hobbies</h4>
-									<span>9,58,458 Ads</span>
-									<a href="all-classifieds.html">View all Ads</a>
+									<h4><?php echo trans('category.category_book')?></h4>
+									<span>9,58,458 <?php echo trans('subcat.subcat_ads')?></span>
+									<a href="all-classifieds.html"><?php echo trans('subcat.subcat_allads')?></a>
 								</div>
 								<div class="clearfix"></div>
 							</div>
 							<div class="sub-categories">
 								<ul>
-									<li><a href="books-sports-hobbies.html">Books & Magazines</a></li>
-									<li><a href="books-sports-hobbies.html">Musical Instruments</a></li>
-									<li><a href="books-sports-hobbies.html">Sports Equipment</a></li>
-									<li><a href="books-sports-hobbies.html">Gym & Fitness</a></li>
-									<li><a href="books-sports-hobbies.html">Other Hobbies</a></li>
+									<li><a href="books-sports-hobbies.html"><?php echo trans('subcat.subcat_book')?></a></li>
+									<li><a href="books-sports-hobbies.html"><?php echo trans('subcat.subcat_music')?></a></li>
+									<li><a href="books-sports-hobbies.html"><?php echo trans('subcat.subcat_sport')?></a></li>
+									<li><a href="books-sports-hobbies.html"><?php echo trans('subcat.subcat_gym')?></a></li>
+									<li><a href="books-sports-hobbies.html"><?php echo trans('subcat.subcat_hobbi')?></a></li>
 									<div class="clearfix"></div>
 								</ul>
 							</div>
@@ -194,9 +194,9 @@
 									<img src="images/cat8.png" title="image" alt="" />
 								</div>
 								<div class="category-info">
-									<h4>Fashion</h4>
-									<span>3,52,345 Ads</span>
-									<a href="all-classifieds.html">View all Ads</a>
+									<h4><?php echo trans('category.category_fashion')?></h4>
+									<span>3,52,345 <?php echo trans('subcat.subcat_ads')?></span>
+									<a href="all-classifieds.html"><?php echo trans('subcat.subcat_allads')?></a>
 								</div>
 								<div class="clearfix"></div>
 							</div>
@@ -215,9 +215,9 @@
 									<img src="images/cat9.png" title="image" alt="" />
 								</div>
 								<div class="category-info">
-									<h4>Kids</h4>
-									<span>8,45,298 Ads</span>
-									<a href="all-classifieds.html">View all Ads</a>
+									<h4><?php echo trans('category.category_kid')?></h4>
+									<span>8,45,298 <?php echo trans('subcat.subcat_ads')?></span>
+									<a href="all-classifieds.html"><?php echo trans('subcat.subcat_allads')?></a>
 								</div>
 								<div class="clearfix"></div>
 							</div>
@@ -237,8 +237,8 @@
 								</div>
 								<div class="category-info">
 									<h4>Services</h4>
-									<span>7,58,867 Ads</span>
-									<a href="all-classifieds.html">View all Ads</a>
+									<span>7,58,867 <?php echo trans('subcat.subcat_ads')?></span>
+									<a href="all-classifieds.html"><?php echo trans('subcat.subcat_allads')?></a>
 								</div>
 								<div class="clearfix"></div>
 							</div>
@@ -264,8 +264,8 @@
 								</div>
 								<div class="category-info">
 									<h4>Jobs</h4>
-									<span>5,74,547 Ads</span>
-									<a href="all-classifieds.html">View all Ads</a>
+									<span>5,74,547 <?php echo trans('subcat.subcat_ads')?></span>
+									<a href="all-classifieds.html"><?php echo trans('subcat.subcat_allads')?></a>
 								</div>
 								<div class="clearfix"></div>
 							</div>
@@ -296,8 +296,8 @@
 								</div>
 								<div class="category-info">
 									<h4>Real Estate</h4>
-									<span>98,156 Ads</span>
-									<a href="all-classifieds.html">View all Ads</a>
+									<span>98,156 <?php echo trans('subcat.subcat_ads')?></span>
+									<a href="all-classifieds.html"><?php echo trans('subcat.subcat_allads')?></a>
 								</div>
 								<div class="clearfix"></div>
 							</div>

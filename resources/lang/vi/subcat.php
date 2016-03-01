@@ -33,11 +33,11 @@
 	'subcat_bicy' => 'Xe đạp',
 			
 	/*
-	 * Việt hóa menu trong Funiture*/
-	'subcat_dinning' => 'Bàn ăn',
-	'subcat_bed' => 'Giường ngủ, Quần áo',
-	'subcat_garden' => 'Nội thất sân vươn',
-	'subcat_house' => 'Thiết bị gia dụng khác',
+	 * Việt hóa menu trong Funiture (Nội thất)*/
+	'subcat_sofa' => 'Bàn & Ghế',
+	'subcat_bed' => 'Giường & Tủ',
+	'subcat_home' => 'Nội thất & Sân vườn',
+	'subcat_other' => 'Thiết bị gia dụng khác',
 			
 	/*
 	 * Việt hóa menu trong Pets*/
@@ -45,5 +45,14 @@
 	'subcat_ca' => 'Bể cá',
 	'subcat_pk' => 'Phụ kiện thú cưng',
 	'subcat_tn' => 'Thú nuôi khác',
+			
+	/*
+	 * Việt hóa menu trong Books*/
+	'subcat_book' => 'Book & Magazines',
+	'subcat_music' => 'Musical Instruments',
+	'subcat_sport' => 'Sport Equiment',
+	'subcat_gym' => 'Gym & Fitness',
+	'subcat_hobbi' => 'Others Hobbies',
+	
 		
 ];
