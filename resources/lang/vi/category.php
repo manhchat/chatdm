@@ -8,7 +8,7 @@ return [
 		'category_bike' => 'Xe Máy',
 		'category_furniture' => 'Nội Thất',
 		'category_pet' => 'Thú Nuôi',
-		'category_book' => 'Sách, Tạp Chí',
+		'category_book' => 'Tạp Chí Thể Thao',
 		'category_fashion' => 'Thời Trang',
 		'category_kid' => 'Đồ Sơ Sinh',
 		'category_service' => 'Dịch Vụ',
