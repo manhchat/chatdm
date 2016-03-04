@@ -19,6 +19,8 @@ Route::get('dang-xuat', 'LoginController@logout');
 Route::get('dang-ky', 'RegisterController@index');
 Route::get('danh-muc', 'CategoryController@index');
 Route::get('dang-tin', 'PostController@index');
+//dang-ky/register
+Route::post('dang-ky/register', 'RegisterController@register');
 /* Route::get('/login', function () {
 	return view('login');
 }); */

@@ -12,7 +12,10 @@ return [
 	'login_your_password' => 'Mật khẩu của bạn',
 	'login_please_input_email' => 'Hãy nhập địa chỉ email của bạn.',
 	'login_please_input_password' => 'Hãy nhập mật khẩu của bạn.',
-	'login_format_email' => 'Email không đúng định dạng.',
+	'login_please_input_password_again' => 'Hãy xác nhận lại mật khẩu của bạn.',
+	'login_format_email' => 'Email bạn nhập không đúng định dạng.',
 	'login_max_email' => 'Email vượt quá ký tự cho phép là 100.',
 	'login_incorrect' => 'Email hoặc mật khẩu không đúng.',
+	'login_please_input_password_confirm' => 'Nhập lại mật khẩu không khớp.',
+	'login_input_password_incorrect' => 'Mật khẩu quá ngắn, yêu cầu tối thiểu phải 6 ký tự.',
 ];
