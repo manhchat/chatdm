@@ -10,8 +10,9 @@
 <div id="page-wrapper" class="sign-in-wrapper">
 				<div class="graphs">
 					<div class="sign-up">
-						<h1>Chúc mừng bạn đã đăng ký thành công</h1>
-						<p class="creating">Bala bala</p>
+						<h1>Chúc mừng bạn đã Đăng ký thành công</h1>
+						<p class="creating">Để hoàn tất việc đăng ký hãy kiểm tra Email và xác nhận tài khoản bạn vừa tạo ! Nếu không nhận được Email kích hoạt tài khoản hãy kiểm tra trong Mục SPAM hoặc liên hệ với chúng tôi theo địa chỉ Email: chatdm@fsoft.com.vn</p>
+						<p align = "center"><font color = "blue"><i>Bán lại là Bán lãi</i></font></p>
 					</div>
 				</div>
 			</div>
