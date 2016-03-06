@@ -19,6 +19,8 @@ Route::get('dang-xuat', 'LoginController@logout');
 Route::get('dang-ky', 'RegisterController@index');
 Route::get('danh-muc', 'CategoryController@index');
 Route::get('dang-tin', 'PostController@index');
+
+Route::get('thanh-cong', 'SuccessController@index');
 //dang-ky/register
 Route::post('dang-ky/register', 'RegisterController@register');
 /* Route::get('/login', function () {
@@ -29,6 +31,7 @@ Route::get('post/get-child', 'PostController@childCategory');
 Route::post('post/get-child', 'PostController@childCategory');
 
 Route::post('post/create', 'PostController@create');
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
