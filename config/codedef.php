@@ -58,10 +58,52 @@ return array(
 					'title' => 'Nhà đất'
 			),
 			array(
-					'id' => 12,
+					'id' => 10000,
 					'class' => 'fa-at',
 					'title' => 'Khác'
 			),
+		),
+		'CHILD_CATEGORY' => array(
+				1 => array(
+						array(
+								'id' => 112,
+								'title' => 'Điện thoại di động'
+						),
+						array(
+								'id' => 113,
+								'title' => 'Máy tính bảng'
+						),
+						array(
+								'id' => 114,
+								'title' => 'Linh kiện, phụ kiện'
+						)
+				),
+				2 => array(
+						array(
+								'id' => 215,
+								'title' => 'Máy tính & Linh kiện'
+						),
+						array(
+								'id' => 216,
+								'title' => 'Tivi & Thiết bị âm thanh'
+						),
+						array(
+								'id' => 217,
+								'title' => 'Camera & Phụ kiện'
+						),
+						array(
+								'id' => 218,
+								'title' => 'Trò chơi & Thiết bị giải trí'
+						),
+						array(
+								'id' => 219,
+								'title' => 'Tủ lạnh - Máy giặt - Điều hòa'
+						),
+						array(
+								'id' => 220,
+								'title' => 'Phòng bếp & Đồ gia dụng khác'
+						)
+				),
 		),
 		'TINH_THANH' => array(
 				'MIEN_BAC' => array(
