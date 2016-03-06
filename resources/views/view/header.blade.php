@@ -32,17 +32,15 @@
 													<option value="<?php echo $key?>"><?php echo $value?></option>
 												<?php endforeach;?>
 											</optgroup>
-											<optgroup label="Miền khác">
-												<optgroup label="Miền Trung">
-													<?php foreach ($danhsachTinhThanh['MIEN_TRUNG'] as $key => $value):?>
-														<option value="<?php echo $key?>"><?php echo $value?></option>
-													<?php endforeach;?>
-												</optgroup>
-												<optgroup label="Miền Nam">
-													<?php foreach ($danhsachTinhThanh['MIEN_NAM'] as $key => $value):?>
-														<option value="<?php echo $key?>"><?php echo $value?></option>
-													<?php endforeach;?>
-												</optgroup>
+											<optgroup label="Miền Trung">
+												<?php foreach ($danhsachTinhThanh['MIEN_TRUNG'] as $key => $value):?>
+													<option value="<?php echo $key?>"><?php echo $value?></option>
+												<?php endforeach;?>
+											</optgroup>
+											<optgroup label="Miền Nam">
+												<?php foreach ($danhsachTinhThanh['MIEN_NAM'] as $key => $value):?>
+													<option value="<?php echo $key?>"><?php echo $value?></option>
+												<?php endforeach;?>
 											</optgroup>
 										</select>
 									</div>

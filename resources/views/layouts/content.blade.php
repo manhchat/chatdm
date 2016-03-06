@@ -24,6 +24,7 @@
 <script src="<?php echo asset('js/bootstrap.min.js')?>"></script>
 <script src="<?php echo asset('js/bootstrap-select.js')?>"></script>
 <script src="<?php echo asset('js/bootstrap-filestyle.min.js')?>"></script>
+<script src="<?php echo asset('js/jquery.isloading.min.js')?>"></script>
 <script>
   $(document).ready(function () {
     var mySelect = $('#first-disabled2');
@@ -47,6 +48,9 @@
 <script type="text/javascript" src="<?php echo asset('js/jquery.leanModal.min.js')?>"></script>
 <link rel="stylesheet" type="text/css" href="<?php echo asset('css/easy-responsive-tabs.css')?>" />
 <script src="<?php echo asset('js/easyResponsiveTabs.js')?>"></script>
+<script>
+	var ROOT_PATH = "<?php echo url('/')?>";
+</script>
 </head>
 <body>
 	@section('header')

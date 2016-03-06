@@ -44,6 +44,9 @@
   });
 </script>
 <script type="text/javascript" src="<?php echo asset('js/jquery.leanModal.min.js')?>"></script>
+<script>
+	var ROOT_PATH = "<?php echo url('/')?>";
+</script>
 </head>
 <body>
 	@section('header')

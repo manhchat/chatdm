@@ -23,7 +23,10 @@ Route::get('dang-tin', 'PostController@index');
 	return view('login');
 }); */
 Route::post('login/logon', 'LoginController@logon');
+Route::get('post/get-child', 'PostController@childCategory');
+Route::post('post/get-child', 'PostController@childCategory');
 
+Route::post('post/create', 'PostController@create');
 /*
 |--------------------------------------------------------------------------
 | Application Routes

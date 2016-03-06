@@ -176,13 +176,15 @@ final class Func
 		return $price.$symbol;
 	}
 	
-	public static function isMobile()
+	public static function arraySigle($arr, $k='id', $val='title')
 	{
-		$userAgent = new Zend_Http_UserAgent();
-		$device = $userAgent->getDevice()->getAllFeatures();
-		if ($device['is_mobile'] == true || $device['is_tablet'] == true) {
-			return true;
+		if (empty($arr)) {
+			return array();
 		}
-		return false;
+		$tmp = array();
+		foreach ($arr as $key => $value) {
+			$tmp[$value[$k]] = $value[$val];
+		}
+		return $tmp;
 	}
 }
