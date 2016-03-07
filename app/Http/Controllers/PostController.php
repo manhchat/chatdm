@@ -17,38 +17,31 @@ class PostController extends PublicController
     public function index()
     {
     	$listCategory = Codedef::getID('CATEGORY_LIST');
-    	$listCategory = Func::arraySigle($listCategory, 'id', 'title');
-    	$listCategory[''] = trans('post.select_category');
-    	ksort($listCategory);
-    	return view('post/index', array('listCategory' => $listCategory));
-    }
-    
-    public function childCategory()
-    {
-    	$category_id = Input::get('category_id');
-    	if ($category_id != '') {
-    		$listCategory = Codedef::getID('CHILD_CATEGORY');
-    		if (isset($listCategory[$category_id]) && !empty($listCategory[$category_id])) {
-    			$data = array(
-    					'hit' => count($listCategory[$category_id]),
-    					'list' => $listCategory[$category_id]
-    			);
-    			echo json_encode($data);
-    			exit();
-    		} else {
-    			$data = array(
-    					'hit' => 0,
-    					'list' => []
-    			);
-    			echo json_encode($data);
-    			exit();
+    	$listCategoryChild = Codedef::getID('CHILD_CATEGORY');
+    	$data = array();
+    	foreach ($listCategory as $key => $value) {
+    		if (isset($listCategoryChild[$value['id']])) {
+    			$dataChild = array();
+    			foreach ($listCategoryChild[$value['id']] as $k => $v) {
+    				$dataChild[$v['id']] = $v['title'];
+    				$data[$value['title']] = $dataChild;
+    			}
     		}
     	}
+    	return view('post/index', array('listCategory' => $data));
+    }
+    
+    public function upload()
+    {
+    	$file = Input::file('image');
+    	echo json_encode(array('true' => 'true'));
     }
     
     public function create()
     {
-    	
+    	echo "<pre>";
+    	var_dump(Input::all());
+    	var_dump(Input::file());
     }
 
 }

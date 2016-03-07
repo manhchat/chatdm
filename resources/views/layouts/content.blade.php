@@ -4,6 +4,7 @@
 <title>@yield('title')</title>
 <link rel="stylesheet" href="<?php echo asset('css/bootstrap.min.css')?>">
 <link rel="stylesheet" href="<?php echo asset('css/bootstrap-select.css')?>">
+<link href="<?php echo asset('css/dropzone.css')?>" rel="stylesheet" type="text/css" media="all" />
 <link href="<?php echo asset('css/style.css')?>" rel="stylesheet" type="text/css" media="all" />
 <link rel="stylesheet" href="<?php echo asset('css/flexslider.css')?>" type="text/css" media="screen" />
 <link rel="stylesheet" href="<?php echo asset('css/font-awesome.min.css')?>" />
@@ -12,6 +13,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="@yield('keyword')" />
 <meta name="description" content="@yield('description')" />
+<meta name="csrf-token" content="<?php echo csrf_token() ?>"/>
 <script type="application/x-javascript">
 	addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
 </script>
@@ -25,6 +27,8 @@
 <script src="<?php echo asset('js/bootstrap-select.js')?>"></script>
 <script src="<?php echo asset('js/bootstrap-filestyle.min.js')?>"></script>
 <script src="<?php echo asset('js/jquery.isloading.min.js')?>"></script>
+<script src="<?php echo asset('js/dropzone.js')?>"></script>
+<script src="<?php echo asset('js/ckeditor/ckeditor.js')?>"></script>
 <script>
   $(document).ready(function () {
     var mySelect = $('#first-disabled2');
@@ -43,6 +47,7 @@
       liveSearch: true,
       maxOptions: 1
     });
+    CKEDITOR.replace( 'ckeditor_area' );
   });
 </script>
 <script type="text/javascript" src="<?php echo asset('js/jquery.leanModal.min.js')?>"></script>

@@ -27,8 +27,8 @@ Route::post('dang-ky/register', 'RegisterController@register');
 	return view('login');
 }); */
 Route::post('login/logon', 'LoginController@logon');
-Route::get('post/get-child', 'PostController@childCategory');
-Route::post('post/get-child', 'PostController@childCategory');
+Route::get('post/upload', 'PostController@upload');
+Route::post('post/upload', 'PostController@upload');
 
 Route::post('post/create', 'PostController@create');
 
