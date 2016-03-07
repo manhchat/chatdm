@@ -49,6 +49,7 @@ class LoginController extends PublicController
     			
     			/* $data = array(
 			        'email' => "hotrolaptop.com@gmail.com",
+			        'ho_ten' => "Nguyen Van Duc"
 			    );
 			
 			    Mail::send('mail.create-account', $data, function ($message) {

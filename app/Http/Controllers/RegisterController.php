@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use App\Token;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Mail;
 
 class RegisterController extends PublicController
 {
@@ -47,13 +48,32 @@ class RegisterController extends PublicController
 			//Khởi tạo đối tượng token
 			$obj = new Token();
 			//Data là mảng các tham số nhập trên màn hình
+			$token = md5(uniqid());
 			$data = array(
 					'email' => Input::get('email'),
 					'password' => md5(Input::get('password')),
-					'token' => md5(uniqid()),
+					'token' => $token,
 					'created' => date('Y-m-d H:i:s')
 			);
 			$insert = $obj->insertToken($data);
+			//Sau khi insert token xong thi gui mail thong bao den user
+			if ($insert != false) {
+				//Neu insert thanh cong thi gui mail
+				//Viet code gui mail vao day
+				
+				$data = array (
+						'email' => Input::get('email'),
+						'url_active' => url('/').'/kich-hoat/token/'.$token,
+						'website' => url('/'),
+				);
+				
+				Mail::send('mail.create-account', $data, function ($message) {
+					
+					$message->from('hotrolaptop.com@gmail.com', 'Banlai.com');
+					$message->to(Input::get('email'))->subject('Kích hoạt tài khoản');
+				});
+				return redirect('thanh-cong');
+			}
 		}
 	}
 }
