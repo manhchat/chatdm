@@ -7,6 +7,8 @@ use App;
 use Validator;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
+use App\Token;
+use Illuminate\Database\Eloquent\Model;
 
 class RegisterController extends PublicController
 {
@@ -42,6 +44,16 @@ class RegisterController extends PublicController
 			return redirect('dang-ky')->withErrors($validator)->withInput(Input::except('password'));
 		} else {
 			//Chỗ này ngày mai sẽ làm insert vào bảng token
+			//Khởi tạo đối tượng token
+			$obj = new Token();
+			//Data là mảng các tham số nhập trên màn hình
+			$data = array(
+					'email' => Input::get('email'),
+					'password' => md5(Input::get('password')),
+					'token' => md5(uniqid()),
+					'created' => date('Y-m-d H:i:s')
+			);
+			$insert = $obj->insertToken($data);
 		}
 	}
 }
