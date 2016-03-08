@@ -47,7 +47,6 @@
       liveSearch: true,
       maxOptions: 1
     });
-    CKEDITOR.replace( 'ckeditor_area' );
   });
 </script>
 <script type="text/javascript" src="<?php echo asset('js/jquery.leanModal.min.js')?>"></script>

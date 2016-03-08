@@ -34,7 +34,7 @@
 				<?php echo Form::text('title', old('title'), array('class' => 'phone post-text'. $errors->first('title', ' error'), 'placeholder' => trans('post.create_title_placeholder'), 'maxlength' => 200))?>
 				<div class="clearfix"></div>
 				<label class="post-label"><?php echo trans('post.create_description_of_ad')?> <span>*</span></label>
-				<?php echo Form::textarea('description', old('description'), array('class' => 'mess'.$classError, 'id' => 'ckeditor_area', 'placeholder' => trans('post.create_description_placeholder')))?>
+				<?php echo Form::textarea('description', old('description'), array('class' => 'ckeditor mess'.$classError, 'placeholder' => trans('post.create_description_placeholder')))?>
 				<div class="clearfix"></div>
 				<label class="post-label"><?php echo trans('post.create_price')?> <span>*</span></label>
 				<?php echo Form::text('price', old('price'), array('class' => 'price post-text'. $errors->first('price', ' error'), 'placeholder' => trans('post.create_price'), 'maxlength' => 200))?>
@@ -49,13 +49,13 @@
 				</div>
 			<div class="personal-details">
 				<label class="post-label"><?php echo trans('post.create_your_name')?> <span>*</span></label>
-				<?php echo Form::text('name', old('name'), array('class' => 'name post-text'. $errors->first('name', ' error'), 'placeholder' => trans('post.create_your_name_placeholder'), 'maxlength' => 100))?>
+				<?php echo Form::text('name', $errors->has() || $user == null ? old('name') : $user->user_name, array('class' => 'name post-text'. $errors->first('name', ' error'), 'placeholder' => trans('post.create_your_name_placeholder'), 'maxlength' => 100))?>
 				<div class="clearfix"></div>
 				<label class="post-label"><?php echo trans('post.create_your_mobile')?> <span>*</span></label>
-				<?php echo Form::text('phone', old('phone'), array('class' => 'phone post-text'. $errors->first('phone', ' error'), 'placeholder' => trans('post.create_your_phone_placeholder'), 'maxlength' => 11))?>
+				<?php echo Form::text('phone', $errors->has() || $user == null ? old('phone') : $user->phone, array('class' => 'phone post-text'. $errors->first('phone', ' error'), 'placeholder' => trans('post.create_your_phone_placeholder'), 'maxlength' => 11))?>
 				<div class="clearfix"></div>
 				<label class="post-label"><?php echo trans('post.create_your_email')?><span>*</span></label>
-				<?php echo Form::text('email', old('email'), array('class' => 'email post-text'. $errors->first('email', ' error'), 'placeholder' => trans('post.create_your_email_placeholder'), 'maxlength' => 100))?>
+				<?php echo Form::text('email', $errors->has() || $user == null ? old('email') : $user->email, array('class' => 'email post-text'. $errors->first('email', ' error'), 'placeholder' => trans('post.create_your_email_placeholder'), 'maxlength' => 100))?>
 				<div class="clearfix"></div>
 				<p class="post-terms"><?php echo trans('post.create_term')?></p>
 				<input type="submit" value="<?php echo trans('post.create')?>">			

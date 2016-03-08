@@ -32,24 +32,8 @@ $(document).ready(function () {
         dictFallbackMessage: 'Trình duyệt mà bạn đang sử dụng không hỗ trợ chức năng này.',
         success: function(file, response){
             console.log(response);
-        },
-      }
+        }
     });
-	/*$('#filedragdrop').dropzone({
-			url: ROOT_PATH+"/post/upload",
-			maxFilesize: 1, 
-			paramName: 'image',
-			acceptedFiles: 'image/*',
-			addRemoveLinks: true,
-			removedfile: function(file) { 
-		      console.log(file);
-		    },
-			dictDefaultMessage: 'aaaa',
-			dictCancelUpload: 'Hủy',
-			clickable: true,
-			
-			headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
-		});*/
 });
 
 function ajax(data) {

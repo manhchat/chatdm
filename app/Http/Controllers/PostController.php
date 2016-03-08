@@ -41,13 +41,19 @@ class PostController extends PublicController
     			'Miền Trung' => $listAddress['MIEN_TRUNG'],
     			'Miền Nam' => $listAddress['MIEN_NAM']
     	);
-    	return view('post/index', array('listCategory' => $data, 'dataTinhThanh' => $dataTinhThanh));
+    	$user = ClassesAuth::get();
+    	return view('post/index', array('listCategory' => $data, 'dataTinhThanh' => $dataTinhThanh, 'user' => $user));
     }
     
     public function upload()
     {
     	$file = Input::file('image');
-    	echo json_encode(array('true' => 'true'));
+    	var_dump($file->getPathName());die;
+    	if ($file->isValid()) {
+    		
+    	}
+    	Func::uploadImage($file['tmp_name'], RESOURCE_PATH.DS.'image');
+    	
     }
     
     public function create()

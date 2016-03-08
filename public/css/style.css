@@ -4815,7 +4815,7 @@ a.logout:hover{
   top: 10%;
   z-index: 9000;
 }
-#cke_ckeditor_area {
+#cke_description {
 	float: left;
 	width: 70%;
 	box-sizing: border-box;
