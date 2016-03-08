@@ -53,4 +53,9 @@ class ClassesAuth
 		Session::forget(LOGIN_IDENTITY_TIMELIFE);
 	}
 	
+	public static function get()
+	{
+		return Session::get(LOGIN_IDENTITY);
+	}
+	
 }

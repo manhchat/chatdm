@@ -25,17 +25,18 @@ class RegisterController extends PublicController
 	{
 		//Khai bao kiem tra du lieu vao day gan giong voi cai login
 		$rules = array(
-			'email' => 'required|email|max:100',
+			'email' => 'required|email|max:100|unique:token,email|unique:user,email',
 			'password' => 'required|min:6|confirmed',
 				//Do nó so sánh confirmed nên ko cần khai báo pasowrd confirmation
 		) ;
 		$messages = array(
-			'email.required' => trans('login.login_please_input_email'),
-			'email.email' => trans('login.login_format_email'),
-			'email.max' => trans('login.login_max_email'),
-			'password.required' => trans('login.login_please_input_password'),
-			'password.min' => trans('login.login_input_password_incorrect'),
-			'password.confirmed' => trans('login.login_please_input_password_confirm'),
+				'email.required' => trans('login.login_please_input_email'),
+				'email.email' => trans('login.login_format_email'),
+				'email.max' => trans('login.login_max_email'),
+				'email.unique' => 'Email này đã được đăng ký.',
+				'password.required' => trans('login.login_please_input_password'),
+				'password.min' => trans('login.login_input_password_incorrect'),
+				'password.confirmed' => trans('login.login_please_input_password_confirm'),
 		);
 		$validator = Validator::make(Input::all(), $rules, $messages);
 		if ($validator->fails()) {

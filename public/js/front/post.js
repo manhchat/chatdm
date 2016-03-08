@@ -32,7 +32,8 @@ $(document).ready(function () {
         dictFallbackMessage: 'Trình duyệt mà bạn đang sử dụng không hỗ trợ chức năng này.',
         success: function(file, response){
             console.log(response);
-        }
+        },
+      }
     });
 	/*$('#filedragdrop').dropzone({
 			url: ROOT_PATH+"/post/upload",
