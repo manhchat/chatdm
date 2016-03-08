@@ -5,7 +5,7 @@ define('DS', DIRECTORY_SEPARATOR);
 define('LOGIN_IDENTITY', 'loginUser');
 define('LOGIN_IDENTITY_TIMELIFE', 'lifeTime');
 
-define('RESOURCE_PATH', realpath(__DIR__.'/../resources'));
+define('RESOURCE_PATH', realpath(__DIR__.'/../uploaded'));
 
 define('THUMBNAIL_IMAGE_MAX_WIDTH', 255);
 define('THUMBNAIL_IMAGE_MAX_HEIGHT', 180);

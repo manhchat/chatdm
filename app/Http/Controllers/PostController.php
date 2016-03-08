@@ -48,11 +48,19 @@ class PostController extends PublicController
     public function upload()
     {
     	$file = Input::file('image');
-    	var_dump($file->getPathName());die;
     	if ($file->isValid()) {
+    		$name = $file->getClientOriginalName();
+    		$extension = $file->getClientOriginalExtension();
+    		$pathImage = RESOURCE_PATH.DS.'image';
+    		$pathCreated = $pathImage.DS.md5(uniqid().microtime());
+    		if (mkdir($pathCreated)) {
+    			$pathNewImage = $pathCreated.DS.$name.'.'.$extension;
+    			Func::uploadImage($file->getPathName(), $pathNewImage);
+    			echo json_encode(array('flg' => 'success', 'path' => $pathNewImage));
+    			exit();
+    		}
     		
     	}
-    	Func::uploadImage($file['tmp_name'], RESOURCE_PATH.DS.'image');
     	
     }
     
