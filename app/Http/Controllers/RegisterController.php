@@ -33,7 +33,7 @@ class RegisterController extends PublicController
 				'email.required' => trans('login.login_please_input_email'),
 				'email.email' => trans('login.login_format_email'),
 				'email.max' => trans('login.login_max_email'),
-				'email.unique' => 'Email này đã được đăng ký.',
+				'email.unique' => trans('register.register_registered'),
 				'password.required' => trans('login.login_please_input_password'),
 				'password.min' => trans('login.login_input_password_incorrect'),
 				'password.confirmed' => trans('login.login_please_input_password_confirm'),
@@ -64,8 +64,10 @@ class RegisterController extends PublicController
 				
 				$data = array (
 						'email' => Input::get('email'),
-						'url_active' => url('/').'/kich-hoat/token/'.$token,
+						'url_active' => url('/').'/kich-hoat/'.$token,
 						'website' => url('/'),
+						'password' => Input::get('password'),
+						
 				);
 				
 				Mail::send('mail.create-account', $data, function ($message) {

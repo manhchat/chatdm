@@ -27,4 +27,10 @@ class User extends Model
     				->where('password', '=', md5($password))->first();
     	return $users;
     }
+    
+    public function insertUser($data=array())
+    {
+    	$inserted = DB::table($this->table)->insert($data);
+    	return $inserted;
+    }
 }

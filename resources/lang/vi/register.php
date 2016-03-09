@@ -9,6 +9,7 @@ return [
 		'register_gobackto' => 'Trở về ',
 		'register_home' => 'Trang chủ',
 		'register_create' => 'Tạo',
+		'register_registered' => 'Email này đã được đăng ký trên hệ thống.',
 		
 		
 		

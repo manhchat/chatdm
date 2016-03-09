@@ -22,4 +22,19 @@ class Token extends Model
 					->update($data);
 		
 	}
+	
+	public function getToken($token)
+	{
+		$tokenArray = DB::table($this->table)
+					->select()
+					->where('token','=',$token)
+					->first();
+		return $tokenArray;
+	}
+	
+	public function deleteToken($id)
+	{
+		return DB::table($this->table)->where('id', '=', $id)->delete();
+	}
+	
 }

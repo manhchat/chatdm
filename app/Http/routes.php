@@ -19,6 +19,7 @@ Route::get('dang-xuat', 'LoginController@logout');
 Route::get('dang-ky', 'RegisterController@index');
 Route::get('danh-muc', 'CategoryController@index');
 Route::get('dang-tin', 'PostController@index');
+Route::get('kich-hoat/{token}', 'ActiveController@index');
 
 Route::get('thanh-cong', 'SuccessController@index');
 //dang-ky/register
