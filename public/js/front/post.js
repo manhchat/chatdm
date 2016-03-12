@@ -1,5 +1,6 @@
 
 $(document).ready(function () {
+	
 	var token = $("input[name=_token]").val();
 	Dropzone.autoDiscover = false;
 	$(".dropzone").dropzone({
@@ -8,7 +9,6 @@ $(document).ready(function () {
         paramName: "image", // The name that will be used to transfer the file
         acceptedFiles: 'image/*',
         accept: function (file, done) {
-            console.log(file)
             if ((file.type).toLowerCase() != "image/jpg" &&
                     (file.type).toLowerCase() != "image/gif" &&
                     (file.type).toLowerCase() != "image/jpeg" &&
@@ -20,6 +20,7 @@ $(document).ready(function () {
                 done();
             }
         },
+        previewTemplate: document.querySelector('#preview-template').innerHTML,
         maxFilesize: 1, // MB
         maxFiles: 4,
         parallelUploads: 4,
@@ -31,35 +32,84 @@ $(document).ready(function () {
         dictFileTooBig: 'Ảnh bạn tải lên quá lớn. Dung lượng ảnh tối đa là 1MB',
         dictFallbackMessage: 'Trình duyệt mà bạn đang sử dụng không hỗ trợ chức năng này.',
         success: function(file, response){
-            console.log(response);
-        }
+        	response = jQuery.parseJSON(response);
+        	if (response.flg == true) {
+        		var inputHiden = '<input type="hidden" value="'+response.id+'" name="image[]" class="image_'+response.id+'">';
+        		$('#dropzone_value').append(inputHiden);
+        		file.previewElement.querySelector("img").src = response.path;
+        		file.responseServer = response;
+        	}
+        },
+        removedfile: function(file) {
+        	if (file.responseServer != undefined) {
+	        	var id = file.responseServer.id;
+	        	$('.image_'+id).remove();
+	        	var _token = $('meta[name="csrf-token"]').attr('content');
+	        	var data = {_token: _token, id: id}
+	        	ajaxRemoveImage(data);
+    		}
+	        var _ref;
+	        return (_ref = file.previewElement) != null ? _ref.parentNode.removeChild(file.previewElement) : void 0;        
+	      }
     });
+	
+	$('#btnPost').click(function() {
+		var category = $('#category').val();
+		var address_id = $('#address_id').val();
+		var title = $('#title').val();
+		var description = $('#description').val();
+		var price = $('#price').val();
+		var name = $('#name').val();
+		var phone = $('#phone').val();
+		var email = $('#email').val();
+		var _token = $('meta[name="csrf-token"]').attr('content');
+		var data = {
+				category: category,
+				address_id: address_id,
+				title: title,
+				price: price,
+				name: name,
+				phone: phone,
+				email: email,
+				_token: _token
+		};
+		validateData(data);
+		return false;
+	});
 });
 
-function ajax(data) {
-	// Toggle loading container when ajax call
-	/*$(document).ajaxStart(function () {
-		$.isLoading({ text: "Đang tải" });
-	});
-	$(document).ajaxStop(function () {
-		$.isLoading( "hide" );
-	});*/
+function ajaxRemoveImage(data) {
 	
-	var action = ROOT_PATH+'/post/get-child';
+	var action = ROOT_PATH+'/post/remove-image';
 	$.ajax({
 		url: action,
 		type: 'POST',
 		data: data,
 		dataType: 'json',
 		success: function(response) {
-			if (response.hit > 0) {
-				var select_child = '<select name="child_category" id="child_category">';
-				var i = 0;
-				for (i; i<response.hit; i++) {
-					select_child += '<option value="'+response.list[i]['id']+'">'+response.list[i]['title']+'</option>'
-				}
-				select_child += '</select>';
-				$('#category_append').append(select_child);
+			if (response.flg == true) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+	});
+}
+
+function validateData(data) {
+	
+	var action = ROOT_PATH+'/post/validate';
+	$.ajax({
+		url: action,
+		type: 'POST',
+		data: data,
+		dataType: 'json',
+		success: function(response) {
+			if (response.flg == true) {
+				$('#postForm').submit();
+			} else {
+				var html = '<div class="alert alert-danger">'+response.message+'</div>';
+				$('#error_area').html(html);
 			}
 		}
 	});

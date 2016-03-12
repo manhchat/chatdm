@@ -32,7 +32,8 @@ Route::get('post/upload', 'PostController@upload');
 Route::post('post/upload', 'PostController@upload');
 
 Route::post('post/create', 'PostController@create');
-
+Route::post('post/remove-image', 'PostController@removeImage');
+Route::post('post/validate', 'PostController@validateData');
 /*
 |--------------------------------------------------------------------------
 | Application Routes

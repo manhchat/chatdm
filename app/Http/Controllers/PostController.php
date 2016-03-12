@@ -12,6 +12,7 @@ use Validator;
 use App\RaoVat;
 use Illuminate\Contracts\Logging\Log;
 use App\Classes\ClassesAuth;
+use App\ImageTmp;
 class PostController extends PublicController
 {
     /**
@@ -49,19 +50,47 @@ class PostController extends PublicController
     {
     	$file = Input::file('image');
     	if ($file->isValid()) {
-    		$name = $file->getClientOriginalName();
     		$extension = $file->getClientOriginalExtension();
     		$pathImage = RESOURCE_PATH.DS.'image';
-    		$pathCreated = $pathImage.DS.md5(uniqid().microtime());
+    		$pathGen = md5(uniqid().microtime());
+    		$pathCreated = $pathImage.DS.$pathGen;
     		if (mkdir($pathCreated)) {
-    			$pathNewImage = $pathCreated.DS.$name.'.'.$extension;
-    			Func::uploadImage($file->getPathName(), $pathNewImage);
-    			echo json_encode(array('flg' => 'success', 'path' => $pathNewImage));
-    			exit();
+    			$newName = uniqid().'.'.$extension;
+    			$pathNewImage = $pathCreated.DS.$newName;
+    			$uploaded = Func::uploadImage($file->getPathName(), $pathNewImage);
+    			//Insert to image_tmp table
+    			if ($uploaded) {
+    				$pathInsert = $pathGen.DS.$newName;
+    				
+    				$obj = new ImageTmp();
+    				$data = array(
+    						'path' => $pathInsert,
+    						'created' => date('Y-m-d H:i:s')
+    				);
+    				$insert = $obj->insertImageTmp($data);
+    				echo json_encode(array('flg' => true, 'id' => $insert, 'path' => asset('uploaded/image/'.$pathGen.'/'.$newName)));
+    				exit();
+    			}
     		}
     		
     	}
     	
+    }
+    
+    public function removeImage()
+    {
+    	$id = Input::get('id');
+    	$obj = new ImageTmp();
+    	$dataImage = $obj->getDataImageTmp($id);
+    	if (!empty($dataImage) && $dataImage != false) {
+    		$dataImageArr = explode("\\", $dataImage->path);
+    		$path = RESOURCE_PATH.DS.'image'.DS.$dataImageArr[0];
+    		if (Func::deleteFileAndFolder($path)) {
+    			$obj->deleteImageTmp($dataImage->id);
+    			echo json_encode(array('flg' => true));
+    			exit();
+    		}
+    	}
     }
     
     public function create()
@@ -84,7 +113,7 @@ class PostController extends PublicController
     			'price.required' => trans('post.price_required'),
     			'name.required' => trans('post.name_required'),
     			'phone.required' => trans('post.phone_required'),
-    			'email.required' => trans('post.emai_required'),
+    			'email.required' => trans('post.email_required'),
     			'email.email' => trans('post.email_email'),
     			'title.max' => trans('post.title_max'),
     			'price.max' => trans('post.price_max'),
@@ -124,6 +153,50 @@ class PostController extends PublicController
     			Session::flash('create_raovat_success', 'Bạn đã đăng thành công tin rao vặt. Tin rao vặt của bạn sẽ được chúng tôi xét duyệt trong thời gian sớm nhất.');
     			return redirect('rao-vat');
     		}
+    	}
+    }
+    
+    public function validateData()
+    {
+    	$rules = array(
+    			'category'            => 'required',
+    			'address_id' => 'required',
+    			'title'         => 'required|max:200',
+    			'description' => 'required',
+    			'price' => 'required|max:200',
+    			'name' => 'required|max:100',
+    			'phone' => 'required|max:11',
+    			'email' => 'required|email|max:100'
+    	);
+    	$messages = array(
+    			'category.required' => trans('post.category_required'),
+    			'address_id.required' => trans('post.address_id_required'),
+    			'title.required' => trans('post.title_required'),
+    			'description.required' => trans('post.description_required'),
+    			'price.required' => trans('post.price_required'),
+    			'name.required' => trans('post.name_required'),
+    			'phone.required' => trans('post.phone_required'),
+    			'email.required' => trans('post.email_required'),
+    			'email.email' => trans('post.email_email'),
+    			'title.max' => trans('post.title_max'),
+    			'price.max' => trans('post.price_max'),
+    			'name.max' => trans('post.name_max'),
+    			'phone.max' => trans('post.phone_max'),
+    			'email.max' => trans('post.email_max')
+    	);
+    	$validator = Validator::make(Input::all(),$rules, $messages);
+    	if ($validator->fails()) {
+    		// get the error messages from the validator
+    		$messages = $validator->messages()->toArray();
+    		$_message = array();
+    		foreach ($messages as $key => $value) {
+    			$_message[] = $value[0];
+    		}
+    		echo json_encode(array('flg' => false, 'message' => implode('<br>', $_message)));
+    		exit(); 
+    	} else {
+    		echo json_encode(array('flg' => true, 'message' => ''));
+    		exit();
     	}
     }
 

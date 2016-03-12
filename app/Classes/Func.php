@@ -187,4 +187,17 @@ final class Func
 		}
 		return $tmp;
 	}
+	
+	public static function deleteFileAndFolder($dir='')
+	{
+		if ($dir == '') {
+			return false;
+		}
+		foreach (glob($dir."/*.*") as $filename) {
+			if (is_file($filename)) {
+				unlink($filename);
+			}
+		}
+		return rmdir($dir);
+	}
 }
