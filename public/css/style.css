@@ -4831,3 +4831,6 @@ span.required {
 #price {
 	width: 50% !important;
 }
+.bootstrap-select .btn {
+	border-radius: 0px;
+}
