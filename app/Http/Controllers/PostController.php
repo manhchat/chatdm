@@ -53,7 +53,7 @@ class PostController extends PublicController
     	if ($file->isValid()) {
     		$extension = $file->getClientOriginalExtension();
     		$pathImage = RESOURCE_PATH.DS.'tmp';
-    		$pathGen = md5(uniqid().microtime());
+    		$pathGen = uniqid().str_replace(" ", "", str_replace(".", "", microtime()));
     		$pathCreated = $pathImage.DS.$pathGen;
     		if (mkdir($pathCreated)) {
     			$newName = uniqid().'.'.$extension;

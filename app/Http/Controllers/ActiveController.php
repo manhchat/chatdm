@@ -31,6 +31,8 @@ class ActiveController extends PublicController
 				//tam thoi redirect ra trang chu da
 				return redirect('/');
 			}
+		} else {
+			response(view('error'), 404);
 		}
 	}
 }

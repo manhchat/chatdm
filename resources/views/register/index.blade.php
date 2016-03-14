@@ -23,7 +23,7 @@
 						<?php echo Form::open(array('url' => url('dang-ky/register')))?>
 							<div class="sign-u">
 								<div class="sign-up1">
-									<h4><?php echo trans('register.register_email')?></h4>
+									<h4><?php echo trans('register.register_email')?><span class="required">*</span></h4>
 								</div>
 								<div class="sign-up2">
 									<?php 
@@ -34,7 +34,7 @@
 							</div>
 							<div class="sign-u">
 								<div class="sign-up1">
-									<h4><?php echo trans('register.register_pass')?></h4>
+									<h4><?php echo trans('register.register_pass')?><span class="required">*</span></h4>
 								</div>
 								<div class="sign-up2">
 									<?php 
@@ -45,7 +45,7 @@
 							</div>
 							<div class="sign-u">
 								<div class="sign-up1">
-									<h4><?php echo trans('register.register_cpass')?></h4>
+									<h4><?php echo trans('register.register_cpass')?><span class="required">*</span></h4>
 								</div>
 								<div class="sign-up2">
 									<?php 
