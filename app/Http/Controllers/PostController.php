@@ -13,6 +13,7 @@ use App\RaoVat;
 use Illuminate\Contracts\Logging\Log;
 use App\Classes\ClassesAuth;
 use App\ImageTmp;
+use App\RaoVatNotLogin;
 class PostController extends PublicController
 {
     /**
@@ -51,7 +52,7 @@ class PostController extends PublicController
     	$file = Input::file('image');
     	if ($file->isValid()) {
     		$extension = $file->getClientOriginalExtension();
-    		$pathImage = RESOURCE_PATH.DS.'image';
+    		$pathImage = RESOURCE_PATH.DS.'tmp';
     		$pathGen = md5(uniqid().microtime());
     		$pathCreated = $pathImage.DS.$pathGen;
     		if (mkdir($pathCreated)) {
@@ -68,7 +69,7 @@ class PostController extends PublicController
     						'created' => date('Y-m-d H:i:s')
     				);
     				$insert = $obj->insertImageTmp($data);
-    				echo json_encode(array('flg' => true, 'id' => $insert, 'path' => asset('uploaded/image/'.$pathGen.'/'.$newName)));
+    				echo json_encode(array('flg' => true, 'id' => $insert, 'path' => asset('uploaded/tmp/'.$pathGen.'/'.$newName)));
     				exit();
     			}
     		}
@@ -83,8 +84,8 @@ class PostController extends PublicController
     	$obj = new ImageTmp();
     	$dataImage = $obj->getDataImageTmp($id);
     	if (!empty($dataImage) && $dataImage != false) {
-    		$dataImageArr = explode("\\", $dataImage->path);
-    		$path = RESOURCE_PATH.DS.'image'.DS.$dataImageArr[0];
+    		$dataImageArr = explode(DS, $dataImage->path);
+    		$path = RESOURCE_PATH.DS.'tmp'.DS.$dataImageArr[0];
     		if (Func::deleteFileAndFolder($path)) {
     			$obj->deleteImageTmp($dataImage->id);
     			echo json_encode(array('flg' => true));
@@ -100,9 +101,9 @@ class PostController extends PublicController
     			'address_id' => 'required',
     			'title'         => 'required|max:200',
     			'description' => 'required',
-    			'price' => 'required|max:200',
+    			'price' => 'required|integer',
     			'name' => 'required|max:100',
-    			'phone' => 'required|max:11',
+    			'phone' => 'required|max:11|regex:/^([0-9\s\-\+\(\)]*)$/',
     			'email' => 'required|email|max:100'
     	);
     	$messages = array(
@@ -114,11 +115,13 @@ class PostController extends PublicController
     			'name.required' => trans('post.name_required'),
     			'phone.required' => trans('post.phone_required'),
     			'email.required' => trans('post.email_required'),
+    			'price.integer' => 'sdsdsd',
     			'email.email' => trans('post.email_email'),
     			'title.max' => trans('post.title_max'),
-    			'price.max' => trans('post.price_max'),
+    			//'price.max' => trans('post.price_max'),
     			'name.max' => trans('post.name_max'),
-    			'phone.max' => trans('post.phone_max'),
+    			'phone.max' => 'Số điện thoại bạn nhập không đúng.',
+    			'phone.regex' => 'Số điện thoại bạn nhập không đúng.',
     			'email.max' => trans('post.email_max')
     	);
     	$validator = Validator::make(Input::all(),$rules, $messages);
@@ -128,46 +131,143 @@ class PostController extends PublicController
     		// redirect our user back to the form with the errors from the validator
     		return redirect('dang-tin')->withErrors($validator)->withInput();
     	} else {
-    		$obj = new RaoVat();
+    		$image_ids = Input::get('image');
+    		$imgObj = new ImageTmp();
+    		$dataImage = $imgObj->getImageTmp($image_ids);
+    		
+    		
     		$user = ClassesAuth::get();
-    		$data = array(
-    				'user_email' => $user->email,
-    				'address_id' => Input::get('address_id'),
-    				'category_id' => Input::get('category_id'),
-    				'title' => Input::get('title'),
-    				'price' => Input::get('price'),
-    				'description' => Input::get('description'),
-    				'name' => Input::get('name'),
-    				'phone' => Input::get('phone'),
-    				'email' => Input::get('email'),
-    				'image1' => Input::get('image1'),
-    				'image2' => Input::get('image2'),
-    				'image3' => Input::get('image3'),
-    				'image4' => Input::get('image4'),
-    				'created' => date('Y-m-d H:i:s'),
-    				'updated' => date('Y-m-d H:i:s'),
-    				'status' => 0,
-    		);
-    		$inserted = $obj->createRaoVat($data);
+    		if (!empty($user)) {
+    			if (!empty($dataImage)) {
+    				$path = RESOURCE_PATH.DS.'images';
+    				$pathUserId = $path.DS.$user->id;
+    				//Create path user id
+    				if (!is_dir($pathUserId)) {
+    					mkdir($pathUserId);
+    				}
+    				//Create path year
+    				$pathYear = $pathUserId.DS.date('Y');
+    				if (!is_dir($pathYear)) {
+    					mkdir($pathYear);
+    				}
+    				$pathSave = $pathYear.DS.date('m');
+    				if (!is_dir($pathSave)) {
+    					mkdir($pathSave);
+    				}
+    				$images = $this->copyImage($dataImage, $pathSave);
+    			}
+    			$obj = new RaoVat();
+    			$data = array(
+    					'user_email' => $user->email,
+    					'address_id' => Input::get('address_id'),
+    					'category_id' => Input::get('category'),
+    					'title' => Input::get('title'),
+    					'price' => Input::get('price'),
+    					'description' => Input::get('description'),
+    					'name' => Input::get('name'),
+    					'phone' => Input::get('phone'),
+    					'email' => Input::get('email'),
+    					'image' => json_encode($images),
+    					'created' => date('Y-m-d H:i:s'),
+    					'updated' => date('Y-m-d H:i:s'),
+    					'status' => 0,
+    			);
+    			$inserted = $obj->createRaoVat($data);
+    		} else {
+    			if (!empty($dataImage)) {
+    				$path = RESOURCE_PATH.DS.'images';
+    				$pathUserId = $path.DS.'images_not_login';
+    				//Create path user id
+    				if (!is_dir($pathUserId)) {
+    					mkdir($pathUserId);
+    				}
+    				//Create path year
+    				$pathYear = $pathUserId.DS.date('Y');
+    				if (!is_dir($pathYear)) {
+    					mkdir($pathYear);
+    				}
+    				$pathMonth = $pathYear.DS.date('m');
+    				if (!is_dir($pathMonth)) {
+    					mkdir($pathMonth);
+    				}
+    				$pathSave = $pathMonth.DS.date('d');
+    				if (!is_dir($pathSave)) {
+    					mkdir($pathSave);
+    				}
+    				$images = $this->copyImage($dataImage, $pathSave);
+    			}
+    			
+    			$obj = new RaoVatNotLogin();
+    			$data = array(
+    					'address_id' => Input::get('address_id'),
+    					'category_id' => Input::get('category'),
+    					'title' => Input::get('title'),
+    					'price' => Input::get('price'),
+    					'description' => Input::get('description'),
+    					'name' => Input::get('name'),
+    					'phone' => Input::get('phone'),
+    					'email' => Input::get('email'),
+    					'image' => json_encode($images),
+    					'created' => date('Y-m-d H:i:s'),
+    					'updated' => date('Y-m-d H:i:s'),
+    					'status' => 0,
+    			);
+    			$inserted = $obj->createRaoVat($data);
+    		}
+    		
     		if ($inserted) {
     			Session::flash('create_raovat_success', 'Bạn đã đăng thành công tin rao vặt. Tin rao vặt của bạn sẽ được chúng tôi xét duyệt trong thời gian sớm nhất.');
-    			return redirect('rao-vat');
+    			return redirect('/');
     		}
     	}
     }
-    
+    /**
+     * Copy image from tmp folder
+     * @param string $path
+     * @param string $dest
+     * @param int $id
+     * @return boolean
+     */
+    private function copyImage($imageArr, $dest)
+    {
+    	$ids = array();
+    	$imagePaths = array();
+    	foreach ($imageArr as $key => $value) {
+    		$pathImage = RESOURCE_PATH.DS.'tmp'.DS.$value->path;
+    		$imageName = explode(DS, $value->path)[1];
+    		$pathDest = $dest.DS.$imageName;
+    		if (copy($pathImage, $pathDest)) {
+    			array_push($ids, $value->id);
+    			$pathImageFolderArr = explode(DS, $pathImage);
+    			array_pop($pathImageFolderArr);
+    			$pathImageFolder = implode(DS, $pathImageFolderArr);
+    			Func::deleteFileAndFolder($pathImageFolder);
+    			array_push($imagePaths, $imageName);
+    		}
+    	}
+    	$obj = new ImageTmp();
+    	$deleted = $obj->deleteImages($ids);
+    	if ($deleted) {
+    		return $imagePaths;
+    	}
+    	return false;
+    }
     public function validateData()
     {
     	$rules = array(
     			'category'            => 'required',
     			'address_id' => 'required',
     			'title'         => 'required|max:200',
-    			'description' => 'required',
-    			'price' => 'required|max:200',
+    			'price' => 'required|integer',
     			'name' => 'required|max:100',
-    			'phone' => 'required|max:11',
+    			'phone' => 'required|max:11|regex:/^([0-9\s\-\+\(\)]*)$/',
     			'email' => 'required|email|max:100'
     	);
+    	if (!ClassesAuth::isAuth()) {
+    		$rules['description'] = 'required|tag_a';
+    	} else {
+    		$rules['description'] = 'required';
+    	}
     	$messages = array(
     			'category.required' => trans('post.category_required'),
     			'address_id.required' => trans('post.address_id_required'),
@@ -177,27 +277,32 @@ class PostController extends PublicController
     			'name.required' => trans('post.name_required'),
     			'phone.required' => trans('post.phone_required'),
     			'email.required' => trans('post.email_required'),
+    			'price.integer' => 'sdsdsd',
     			'email.email' => trans('post.email_email'),
     			'title.max' => trans('post.title_max'),
-    			'price.max' => trans('post.price_max'),
+    			//'price.max' => trans('post.price_max'),
     			'name.max' => trans('post.name_max'),
-    			'phone.max' => trans('post.phone_max'),
-    			'email.max' => trans('post.email_max')
+    			'phone.max' => 'Số điện thoại bạn nhập không đúng.',
+    			'phone.regex' => 'Số điện thoại bạn nhập không đúng.',
+    			'email.max' => trans('post.email_max'),
+    			'description.tag_a' =>'Bạn chưa đăng nhập nên không thể gắn link trong nội dung tin rao vặt.',
     	);
     	$validator = Validator::make(Input::all(),$rules, $messages);
+    	
     	if ($validator->fails()) {
     		// get the error messages from the validator
     		$messages = $validator->messages()->toArray();
     		$_message = array();
+    		$field = array();
     		foreach ($messages as $key => $value) {
     			$_message[] = $value[0];
+    			$field[] = $key;
     		}
-    		echo json_encode(array('flg' => false, 'message' => implode('<br>', $_message)));
+    		echo json_encode(array('flg' => false, 'message' => implode('<br>', $_message), 'field' => $field));
     		exit(); 
     	} else {
     		echo json_encode(array('flg' => true, 'message' => ''));
     		exit();
     	}
     }
-
 }

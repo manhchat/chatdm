@@ -1,6 +1,6 @@
 
 $(document).ready(function () {
-	
+	$('#price').number(true);
 	var token = $("input[name=_token]").val();
 	Dropzone.autoDiscover = false;
 	$(".dropzone").dropzone({
@@ -21,15 +21,16 @@ $(document).ready(function () {
             }
         },
         previewTemplate: document.querySelector('#preview-template').innerHTML,
-        maxFilesize: 1, // MB
+        maxFilesize: 2, // MB
         maxFiles: 4,
-        parallelUploads: 4,
+        parallelUploads: 1,
         addRemoveLinks: true,
         dictDefaultMessage: 'Bấm vào đây hoặc kéo thả ảnh vào đây để tải lên.',
         dictMaxFilesExceeded: "Bạn chỉ có thể tải lên tối đa 4 ảnh",
         dictRemoveFile: "Xóa",
         dictCancelUploadConfirmation: "Bạn chắc chắn muốn hủy tải lên?",
-        dictFileTooBig: 'Ảnh bạn tải lên quá lớn. Dung lượng ảnh tối đa là 1MB',
+        dictCancelUpload: "Hủy",
+        dictFileTooBig: 'Ảnh bạn tải lên quá lớn. Dung lượng ảnh tối đa là 2MB',
         dictFallbackMessage: 'Trình duyệt mà bạn đang sử dụng không hỗ trợ chức năng này.',
         success: function(file, response){
         	response = jQuery.parseJSON(response);
@@ -54,10 +55,11 @@ $(document).ready(function () {
     });
 	
 	$('#btnPost').click(function() {
+		$('input').removeClass('error');
 		var category = $('#category').val();
 		var address_id = $('#address_id').val();
 		var title = $('#title').val();
-		var description = $('#description').val();
+		var description = CKEDITOR.instances['description'].getData();
 		var price = $('#price').val();
 		var name = $('#name').val();
 		var phone = $('#phone').val();
@@ -67,6 +69,7 @@ $(document).ready(function () {
 				category: category,
 				address_id: address_id,
 				title: title,
+				description: description,
 				price: price,
 				name: name,
 				phone: phone,
@@ -110,6 +113,11 @@ function validateData(data) {
 			} else {
 				var html = '<div class="alert alert-danger">'+response.message+'</div>';
 				$('#error_area').html(html);
+				$.each(response.field, function (index, item) {
+					var id = '#'+item;
+					$(id).addClass('error');
+					$(window).scrollTop($('#error_area').offset().top);
+				});
 			}
 		}
 	});

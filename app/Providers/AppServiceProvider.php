@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Validator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -14,6 +15,12 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+    	Validator::extend('tag_a', function($attribute, $value, $parameters, $validator) {
+    		if (strip_tags($value, '<a>') != strip_tags($value)) {
+    			return false;
+    		}
+    		return true;
+    	});
     }
 
     /**

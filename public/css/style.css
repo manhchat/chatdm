@@ -4825,3 +4825,9 @@ input.error{
 	border: 1px solid #d27f7e !important;
 	background-color: #ffd1d0;
 }
+span.required {
+	color: red;
+}
+#price {
+	width: 50% !important;
+}

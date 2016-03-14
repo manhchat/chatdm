@@ -16,6 +16,11 @@
 <meta name="csrf-token" content="<?php echo csrf_token() ?>"/>
 <script type="application/x-javascript">
 	addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+	<?php if (ClassesAuth::isAuth()) {?>
+    var IS_AUTH = true;
+    <?php } else {?>
+    var IS_AUTH = false;
+    <?php }?>
 </script>
 <!-- //for-mobile-apps -->
 
@@ -29,6 +34,7 @@
 <script src="<?php echo asset('js/jquery.isloading.min.js')?>"></script>
 <script src="<?php echo asset('js/dropzone.js')?>"></script>
 <script src="<?php echo asset('js/ckeditor/ckeditor.js')?>"></script>
+<script src="<?php echo asset('js/jquery.number.min.js')?>"></script>
 <script>
   $(document).ready(function () {
     var mySelect = $('#first-disabled2');

@@ -40,4 +40,32 @@ class ImageTmp extends Model
     	}
     	return DB::table($this->table)->where('id', '=', $id)->delete();
     }
+    /**
+     * 
+     * @param string $id
+     * @return boolean
+     */
+    public function deleteImages($ids='')
+    {
+    	if (empty($ids)) {
+    		return false;
+    	}
+    	return DB::table($this->table)->whereIn('id', $ids)->delete();
+    }
+    /**
+     * Get image uploaded
+     *
+     * @param string $id
+     * @return boolean
+     */
+    public function getImageTmp($ids=array())
+    {
+    	if (empty($ids)) {
+    		return array();
+    	}
+    	$data = DB::table($this->table)
+	    	->select()
+	    	->whereIn('id', $ids)->get();
+    	return $data;
+    }
 }

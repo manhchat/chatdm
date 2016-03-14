@@ -14,6 +14,11 @@
 <meta name="description" content="@yield('description')" />
 <script type="application/x-javascript">
 	addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+	<?php if (ClassesAuth::isAuth()) {?>
+    var IS_AUTH = true;
+    <?php } else {?>
+    var IS_AUTH = false;
+    <?php }?>
 </script>
 <!-- //for-mobile-apps -->
 

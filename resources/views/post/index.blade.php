@@ -15,6 +15,17 @@
 		<h2 class="head"><?php echo trans('post.create_title')?></h2>
 		<div class="post-ad-form">
 			<div id="error_area"></div>
+			<?php if (!ClassesAuth::isAuth()):?>
+			<div class="alert alert-warning">
+				Bạn đang đăng tin rao vặt trong trạng thái chưa đăng nhập.
+				<br>
+				Nếu đăng tin khi chưa đăng nhập tin của bạn chỉ được lưu lại trên hệ thống 3 tháng.
+				<br>
+				Tin rao vặt của bạn sẽ không làm mới được.
+				<br>
+				<a href="<?php echo url('dang-ky')?>">Hãy dành 3s để tạo tài khoản bằng việc click vào đây.</a>
+			</div>
+			<?php endif;?>
 			<?php $classError = ''?>
 			@if ($errors->has())
 			<?php $classError = ' error'?>
@@ -25,20 +36,23 @@
 		        </div>
 	        @endif
 			<?php echo Form::open(array('url' => url('post/create'), 'id' => 'postForm'))?>
-				<label class="post-label"><?php echo trans('post.select_category')?> <span>*</span></label>
-				<?php echo Form::select('category', $listCategory, old('category'), array('id' => 'category', 'class' => 'selectpicker', 'data-live-search' => 'true', 'data-style' => 'btn-success', 'data-dropup-auto' => 'false'))?>
+				<label class="post-label"><?php echo trans('post.select_category')?> <span class="required">*</span></label>
+				<div id="category_div"><?php echo Form::select('category', $listCategory, old('category'), array('id' => 'category', 'class' => 'selectpicker', 'data-live-search' => 'true', 'data-style' => 'btn-success', 'data-dropup-auto' => 'false'))?></div>
 				<div class="clearfix"></div>
-				<label class="post-label"><?php echo trans('post.select_address')?> <span>*</span></label>
-				<?php echo Form::select('address_id', $dataTinhThanh, old('address_id'), array('id' => 'address_id', 'class' => 'selectpicker', 'data-live-search' => 'true', 'data-style' => 'btn-success', 'data-dropup-auto' => 'false'))?>
+				<label class="post-label"><?php echo trans('post.select_address')?> <span class="required">*</span></label>
+				<div id="address_id_div"><?php echo Form::select('address_id', $dataTinhThanh, old('address_id'), array('id' => 'address_id', 'class' => 'selectpicker', 'data-live-search' => 'true', 'data-style' => 'btn-success', 'data-dropup-auto' => 'false'))?></div>
 				<div class="clearfix"></div>
-				<label class="post-label"><?php echo trans('post.create_title_of_ad')?> <span>*</span></label>
-				<div><?php echo Form::text('title', old('title'), array('class' => 'phone post-text'. $errors->first('title', ' error'), 'placeholder' => trans('post.create_title_placeholder'), 'maxlength' => 200))?></div>
+				<label class="post-label"><?php echo trans('post.create_title_of_ad')?> <span class="required">*</span></label>
+				<div><?php echo Form::text('title', old('title'), array('class' => 'phone post-text'. $errors->first('title', ' error'), 'id' => 'title', 'placeholder' => trans('post.create_title_placeholder'), 'maxlength' => 200))?></div>
 				<div class="clearfix"></div>
-				<label class="post-label"><?php echo trans('post.create_description_of_ad')?> <span>*</span></label>
-				<?php echo Form::textarea('description', old('description'), array('class' => 'ckeditor mess'.$classError, 'placeholder' => trans('post.create_description_placeholder')))?>
+				<label class="post-label"><?php echo trans('post.create_description_of_ad')?> <span class="required">*</span></label>
+				<?php echo Form::textarea('description', old('description'), array('class' => 'mess'.$classError, 'id' => 'description', 'placeholder' => trans('post.create_description_placeholder')))?>
+				<script>
+					CKEDITOR.replace( 'description' );
+				</script>
 				<div class="clearfix"></div>
-				<label class="post-label"><?php echo trans('post.create_price')?> <span>*</span></label>
-				<?php echo Form::text('price', old('price'), array('class' => 'price post-text'. $errors->first('price', ' error'), 'placeholder' => trans('post.create_price'), 'maxlength' => 200))?>
+				<label class="post-label"><?php echo trans('post.create_price')?> <span class="required">*</span></label>
+				<?php echo Form::text('price', old('price'), array('class' => 'price post-text'. $errors->first('price', ' error'), 'id' => 'price', 'placeholder' => 'Hãy nhập số tiền VNĐ', 'maxlength' => 200))?>
 				<div class="clearfix"></div>
 				<div class="upload-ad-photos">
 				<label class="post-label"><?php echo trans('post.create_image')?> :</label>	
@@ -50,13 +64,13 @@
 				</div>
 				<div id="dropzone_value"></div>
 			<div class="personal-details">
-				<label class="post-label"><?php echo trans('post.create_your_name')?> <span>*</span></label>
-				<?php echo Form::text('name', $errors->has() || $user == null ? old('name') : $user->user_name, array('class' => 'name post-text'. $errors->first('name', ' error'), 'placeholder' => trans('post.create_your_name_placeholder'), 'maxlength' => 100))?>
+				<label class="post-label"><?php echo trans('post.create_your_name')?> <span class="required">*</span></label>
+				<?php echo Form::text('name', $errors->has() || $user == null ? old('name') : $user->user_name, array('class' => 'name post-text'. $errors->first('name', ' error'), 'id' => 'name', 'placeholder' => trans('post.create_your_name_placeholder'), 'maxlength' => 100))?>
 				<div class="clearfix"></div>
-				<label class="post-label"><?php echo trans('post.create_your_mobile')?> <span>*</span></label>
-				<?php echo Form::text('phone', $errors->has() || $user == null ? old('phone') : $user->phone, array('class' => 'phone post-text'. $errors->first('phone', ' error'), 'placeholder' => trans('post.create_your_phone_placeholder'), 'maxlength' => 11))?>
+				<label class="post-label"><?php echo trans('post.create_your_mobile')?> <span class="required">*</span></label>
+				<?php echo Form::text('phone', $errors->has() || $user == null ? old('phone') : $user->phone, array('class' => 'phone post-text'. $errors->first('phone', ' error'), 'id' => 'phone', 'placeholder' => trans('post.create_your_phone_placeholder'), 'maxlength' => 11))?>
 				<div class="clearfix"></div>
-				<label class="post-label"><?php echo trans('post.create_your_email')?><span>*</span></label>
+				<label class="post-label"><?php echo trans('post.create_your_email')?><span class="required">*</span></label>
 				<?php echo Form::text('email', $errors->has() || $user == null ? old('email') : $user->email, array('class' => 'email post-text'. $errors->first('email', ' error'), 'id' => 'email', 'placeholder' => trans('post.create_your_email_placeholder'), 'maxlength' => 100))?>
 				<div class="clearfix"></div>
 				<p class="post-terms"><?php echo trans('post.create_term')?></p>
