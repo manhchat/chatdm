@@ -200,4 +200,27 @@ final class Func
 		}
 		return rmdir($dir);
 	}
+	
+	public static function getIpClient()
+	{
+		if (isset($_SERVER)) {
+			if (isset($_SERVER["HTTP_X_FORWARDED_FOR"])) {
+				$ip = $_SERVER["HTTP_X_FORWARDED_FOR"];
+			} elseif (isset($_SERVER["HTTP_CLIENT_IP"])) {
+				$ip = $_SERVER["HTTP_CLIENT_IP"];
+			} else {
+				$ip = isset($_SERVER["REMOTE_ADDR"]) ? $_SERVER["REMOTE_ADDR"] : getenv('REMOTE_ADDR');
+				$ip = htmlspecialchars($ip);
+				if (strpos($ip, '::') === 0) {
+					$ip = substr($ip, strrpos($ip, ':')+1);
+				}
+			}
+		} elseif (getenv('HTTP_X_FORWARDED_FOR')) {
+			$ip = getenv('HTTP_X_FORWARDED_FOR');
+		} elseif (getenv('HTTP_CLIENT_IP')) {
+			$ip = getenv('HTTP_CLIENT_IP');
+		}
+	
+		return $ip;
+	}
 }

@@ -100,12 +100,16 @@ class PostController extends PublicController
     			'category'            => 'required',
     			'address_id' => 'required',
     			'title'         => 'required|max:200',
-    			'description' => 'required',
-    			'price' => 'required|integer',
+    			'price' => 'required',
     			'name' => 'required|max:100',
     			'phone' => 'required|max:11|regex:/^([0-9\s\-\+\(\)]*)$/',
     			'email' => 'required|email|max:100'
     	);
+    	if (!ClassesAuth::isAuth()) {
+    		$rules['description'] = 'required|tag_a';
+    	} else {
+    		$rules['description'] = 'required';
+    	}
     	$messages = array(
     			'category.required' => trans('post.category_required'),
     			'address_id.required' => trans('post.address_id_required'),
@@ -115,14 +119,13 @@ class PostController extends PublicController
     			'name.required' => trans('post.name_required'),
     			'phone.required' => trans('post.phone_required'),
     			'email.required' => trans('post.email_required'),
-    			'price.integer' => 'sdsdsd',
     			'email.email' => trans('post.email_email'),
     			'title.max' => trans('post.title_max'),
-    			//'price.max' => trans('post.price_max'),
     			'name.max' => trans('post.name_max'),
     			'phone.max' => 'Số điện thoại bạn nhập không đúng.',
     			'phone.regex' => 'Số điện thoại bạn nhập không đúng.',
-    			'email.max' => trans('post.email_max')
+    			'email.max' => trans('post.email_max'),
+    			'description.tag_a' =>'Bạn chưa đăng nhập nên không thể gắn link trong nội dung tin rao vặt.',
     	);
     	$validator = Validator::make(Input::all(),$rules, $messages);
     	if ($validator->fails()) {
@@ -258,7 +261,7 @@ class PostController extends PublicController
     			'category'            => 'required',
     			'address_id' => 'required',
     			'title'         => 'required|max:200',
-    			'price' => 'required|integer',
+    			'price' => 'required',
     			'name' => 'required|max:100',
     			'phone' => 'required|max:11|regex:/^([0-9\s\-\+\(\)]*)$/',
     			'email' => 'required|email|max:100'
@@ -277,10 +280,8 @@ class PostController extends PublicController
     			'name.required' => trans('post.name_required'),
     			'phone.required' => trans('post.phone_required'),
     			'email.required' => trans('post.email_required'),
-    			'price.integer' => 'sdsdsd',
     			'email.email' => trans('post.email_email'),
     			'title.max' => trans('post.title_max'),
-    			//'price.max' => trans('post.price_max'),
     			'name.max' => trans('post.name_max'),
     			'phone.max' => 'Số điện thoại bạn nhập không đúng.',
     			'phone.regex' => 'Số điện thoại bạn nhập không đúng.',

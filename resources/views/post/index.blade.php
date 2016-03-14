@@ -52,7 +52,7 @@
 				</script>
 				<div class="clearfix"></div>
 				<label class="post-label"><?php echo trans('post.create_price')?> <span class="required">*</span></label>
-				<?php echo Form::text('price', old('price'), array('class' => 'price post-text'. $errors->first('price', ' error'), 'id' => 'price', 'placeholder' => 'Hãy nhập số tiền VNĐ', 'maxlength' => 200))?>
+				<?php echo Form::text('price', old('price'), array('class' => 'price post-text'. $errors->first('price', ' error'), 'id' => 'price', 'placeholder' => 'Hãy nhập số tiền VNĐ', 'maxlength' => 200))?><span class="label label-success">Đồng</span>
 				<div class="clearfix"></div>
 				<div class="upload-ad-photos">
 				<label class="post-label"><?php echo trans('post.create_image')?> :</label>	

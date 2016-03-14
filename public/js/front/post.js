@@ -25,7 +25,7 @@ $(document).ready(function () {
         maxFiles: 4,
         parallelUploads: 1,
         addRemoveLinks: true,
-        dictDefaultMessage: 'Bấm vào đây hoặc kéo thả ảnh vào đây để tải lên.',
+        dictDefaultMessage: 'Bấm vào đây hoặc kéo thả ảnh vào đây để tải lên. Tối đa 4 ảnh',
         dictMaxFilesExceeded: "Bạn chỉ có thể tải lên tối đa 4 ảnh",
         dictRemoveFile: "Xóa",
         dictCancelUploadConfirmation: "Bạn chắc chắn muốn hủy tải lên?",
