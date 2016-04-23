@@ -116,6 +116,9 @@ function validateData(data) {
 				$.each(response.field, function (index, item) {
 					var id = '#'+item;
 					$(id).addClass('error');
+					if (item == 'description') {
+						$('#cke_description').addClass('error');
+					}
 					$(window).scrollTop($('#error_area').offset().top);
 				});
 			}

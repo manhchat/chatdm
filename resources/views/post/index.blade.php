@@ -73,7 +73,7 @@
 				<label class="post-label"><?php echo trans('post.create_your_email')?><span class="required">*</span></label>
 				<?php echo Form::text('email', $errors->has() || $user == null ? old('email') : $user->email, array('class' => 'email post-text'. $errors->first('email', ' error'), 'id' => 'email', 'placeholder' => trans('post.create_your_email_placeholder'), 'maxlength' => 100))?>
 				<div class="clearfix"></div>
-				<p class="post-terms"><?php echo trans('post.create_term')?></p>
+				<p class="post-terms"><input type="checkbox" class="large checkbox_term"/><?php echo trans('post.create_term')?></p>
 				<input type="submit" id="btnPost" value="<?php echo trans('post.create')?>">			
 				</div>		
 			<div class="clearfix"></div>

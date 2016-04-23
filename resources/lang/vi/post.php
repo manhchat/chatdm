@@ -19,7 +19,7 @@ return [
     'create_your_mobile' => 'Số điện thoại của bạn',
     'create_your_email' => 'Địa chỉ email của bạn',
     'upload_btn' => 'Chọn file để tải lên',
-    'create_term' => 'Bấm <strong>nút Đăng tin</strong> nếu bạn chấp nhận <a href="terms.html" target="_blank">điều khoản sử dụng </a> và <a href="privacy.html" target="_blank">Chính sách riêng tư</a>',
+    'create_term' => 'Tôi <strong>đồng ý</strong> với <a href="terms.html" target="_blank">điều khoản sử dụng </a> và <a href="privacy.html" target="_blank">Chính sách riêng tư</a> của Bán lại',
     'create_description_placeholder' => 'Hãy viết vài dòng về sản phẩm của bạn.',
     'create' => 'Đăng tin',
     

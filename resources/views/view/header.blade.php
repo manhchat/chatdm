@@ -25,7 +25,7 @@
 							<div class="modal-body">
 								 <form class="form-horizontal" role="form">
 									<div class="form-group">
-										<select id="basic2" class="show-tick form-control" multiple>
+										<select id="basic2" class="show-tick form-control">
 											<optgroup label="Miền Bắc">
 												<option selected style="display:none;color:#eee;">Chọn thành phố</option>
 												<?php foreach ($danhsachTinhThanh['MIEN_BAC'] as $key => $value):?>

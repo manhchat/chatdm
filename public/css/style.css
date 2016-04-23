@@ -4834,3 +4834,9 @@ span.required {
 .bootstrap-select .btn {
 	border-radius: 0px;
 }
+#cke_description {
+	border: 1px solid #01a185;
+}
+#cke_description.error {
+	border: 1px solid red;
+}

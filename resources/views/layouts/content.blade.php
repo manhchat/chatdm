@@ -30,7 +30,6 @@
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="<?php echo asset('js/bootstrap.min.js')?>"></script>
 <script src="<?php echo asset('js/bootstrap-select.js')?>"></script>
-<script src="<?php echo asset('js/bootstrap-filestyle.min.js')?>"></script>
 <script src="<?php echo asset('js/jquery.isloading.min.js')?>"></script>
 <script src="<?php echo asset('js/dropzone.js')?>"></script>
 <script src="<?php echo asset('js/ckeditor/ckeditor.js')?>"></script>
